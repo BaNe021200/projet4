@@ -28,12 +28,22 @@ class PostManager extends Manager
 
 
 
-    public function postPost(){
+   /* public function postPost(){
         $db = $this->dbConnect();
         $pdoStat = $db->prepare('INSERT INTO posts(title,resume,content,creation_date) VALUES(?,?,?,NOW())');
         $newPost= $pdoStat->execute(array($_POST['title'],$_POST['resume'],$_POST['content']));
         return $newPost;
-    }
+    }*/
+
+   public function postPost(){
+       $pdo=$this->dbConnect();
+       $pdoStat = $pdo->prepare('INSERT INTO posts VALUES (NULL,:title, :resume, :content, NOW(),NULL)');
+       $pdoStat->bindValue(':title', $_POST['title'], PDO::PARAM_STR);
+       $pdoStat->bindValue(':resume', $_POST['resume'], PDO::PARAM_STR);
+       $pdoStat->bindValue(':content', $_POST['content'], PDO::PARAM_STR);
+       $newPost= $pdoStat->execute();
+       return $newPost;
+   }
 
 
 
