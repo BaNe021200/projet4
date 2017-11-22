@@ -31,3 +31,15 @@ a
     display: block;
     text-align: right;
 }
+
+.center
+{
+    text-align: center;
+}
+
+
+header
+{
+    display: flex;
+    justify-content: flex-end;
+}

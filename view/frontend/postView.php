@@ -1,6 +1,7 @@
 <?php $title= htmlspecialchars($post['title']);?>
 <?php ob_start();?>
-<h1>Mon super blog !</h1>
+<h1>Billet Simple pour l'Alaska</h1>
+<h2>le blog roman de Jean ForteRoche</h2>
 <p><a href="index.php">Retour à la liste des posts</a></p>
 
 

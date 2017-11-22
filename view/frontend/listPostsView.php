@@ -1,6 +1,7 @@
 <?php $title = "Bilet simple pour l'alaska"; ?>
 
 <?php ob_start(); ?>
+   <header> <a href="index.php?action=publicationPost"><button>Connexion</button></a></header>
     <h1>Billet Simple pour l'Alaska</h1>
     <h2>le blog roman de Jean ForteRoche</h2>
 
@@ -25,6 +26,7 @@ while ($data = $posts->fetch())
 }
 $posts->closeCursor();
 ?>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require_once'view/frontend/template.php'; ?>
