@@ -26,6 +26,17 @@
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />
     </div>
+
+
+    <div>
+        <label for="email">Email</label><br />
+        <input type="text" id="email" name="email" />
+    </div>
+
+
+
+
+
     <div>
         <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
@@ -40,8 +51,18 @@
 while ($comment = $comments->fetch())
 {
     ?>
+
     <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+
+    <a href="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>">
+        <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post">
+          <input type="hidden" name="reportedComment" id="id" value="1">
+
+            <input type="submit" value="Signaler">
+        </form>
+
+    </a>
     <?php
 }
 

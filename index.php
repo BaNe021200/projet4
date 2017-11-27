@@ -32,6 +32,11 @@ if(isset($_GET['action'])){
     elseif ($_GET['action'] == 'publicationPost'){
         publicationPost();
     }
+
+    elseif ($_GET['action'] == 'adminTable'){
+        adminTable();
+    }
+
     elseif ($_GET['action'] == 'addPost'){
         if (!empty($_POST['title']) && !empty($_POST['resume']) && !empty($_POST['content'])) {
             addPost($_POST['title'], $_POST['resume'], $_POST['content']);
@@ -40,6 +45,17 @@ if(isset($_GET['action'])){
             throw new Exception('Erreur : tous les champs ne sont pas remplis !');
         }
     }
+
+    elseif ($_GET['action'] == 'signalizeComment') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            reportComment($_GET['id']);
+        }
+        else {
+            throw new Exception('Erreur : aucun identifiant de commentaire
+         envoyé');
+        }
+    }
+
 }
 else{
     listPosts();

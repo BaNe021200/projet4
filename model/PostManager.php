@@ -1,7 +1,7 @@
 <?php
-namespace BaseBlog\model;
+namespace model;
 require_once 'model/Manager.php';
-use BaseBlog\model\Manager;
+use model\Manager;
 use PDO;
 class PostManager extends Manager
 {
@@ -11,8 +11,10 @@ class PostManager extends Manager
    $db=$this->dbConnect();
 
 // On récupère les derniers billets
-    $req = $db->query('SELECT id, title,resume, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date ASC LIMIT 0, 15');
+    $req = $db->query('SELECT id, title,resume, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr, DATE_FORMAT(modification_date, \'%d/%m/%Y\') AS modification_date_fr FROM posts ORDER BY creation_date ASC LIMIT 0, 15');
+
     return $req;
+
 }
 
     public function getPost($postId){
@@ -44,7 +46,6 @@ class PostManager extends Manager
        $newPost= $pdoStat->execute();
        return $newPost;
    }
-
 
 
 

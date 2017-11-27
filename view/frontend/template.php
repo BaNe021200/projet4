@@ -8,9 +8,17 @@
     <title><?= $title ?></title>
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/wing.css">
+
+    <?= $head ?>
 </head>
 <body>
 
 <?= $content ?>
+
+
 </body>
 </html>
+
+
+
+

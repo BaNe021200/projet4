@@ -1,8 +1,8 @@
 <?php
 require_once 'model/PostManager.php';
 require_once 'model/CommentManager.php';
-use BaseBlog\model\CommentManager;
-use BaseBlog\model\PostManager;
+use model\CommentManager;
+use model\PostManager;
 
 
 function listPosts(){
@@ -25,11 +25,24 @@ function post(){
 
 function addComments($postId){
     $commentManager = new CommentManager();
-
     $comments= $commentManager->postComment($postId);
+
  if($comments===false){
      throw new Exception("Y'a comme qui dirait une couille dans le potage : impossible d'ajouter le commentaire");
  }else{
      header('Location:index.php?action=post&id='.$postId);
  }
+}
+
+function reportComment($commentId){
+    $commentManager= new CommentManager();
+    $report= $commentManager->reportSignalizedComment($commentId);
+
+    if($report===false){
+        throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible de signaler le commentaire");
+    }else{
+        $message= "le commentaire é été signaler à Monsieur ForteRoche";
+
+        header('location:index.php');
+    }
 }
