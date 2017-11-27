@@ -33,8 +33,22 @@ if(isset($_GET['action'])){
         publicationPost();
     }
 
-    elseif ($_GET['action'] == 'adminTable'){
-        adminTable();
+    elseif ($_GET['action']== 'modificationPost'){
+        modifyPost();
+    }
+
+    elseif ($_GET['action'] =='modifyPost'){
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+            updatePosts($_GET['id'],$_POST['title'],$_POST['resume'],$_POST['content']);
+        }
+        else {
+            throw new Exception( 'Erreur : aucun identifiant de billet envoyé');
+        }
+
+    }
+
+    elseif ($_GET['action'] == 'adminPost'){
+        adminPost();
     }
 
     elseif ($_GET['action'] == 'addPost'){
@@ -49,6 +63,7 @@ if(isset($_GET['action'])){
     elseif ($_GET['action'] == 'signalizeComment') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             reportComment($_GET['id']);
+            echo $message;
         }
         else {
             throw new Exception('Erreur : aucun identifiant de commentaire

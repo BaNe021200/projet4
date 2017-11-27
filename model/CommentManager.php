@@ -28,7 +28,7 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    public function listPostAdmin(){
+   /* public function listPostAdmin(){
 
         $pdo=$this->dbConnect();
         $pdoStat= $pdo->prepare('
@@ -36,7 +36,9 @@ class CommentManager extends Manager
         AS creation_date_fr,DATE_FORMAT(posts.modification_date, \'%d/%m/%Y à %Hh%imin%ss\') 
         AS modification_date_fr, 
         COUNT(comments.comment) 
-        AS nbComment 
+        AS nbComment,
+        COUNT(comments.reportedComment)
+        AS repComments
         FROM comments 
         INNER JOIN Posts 
         ON comments.postId= posts.id 
@@ -48,7 +50,7 @@ class CommentManager extends Manager
 
 
 
-    }
+    }*/
 
 
     public function reportSignalizedComment($commentId){

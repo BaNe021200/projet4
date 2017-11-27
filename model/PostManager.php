@@ -47,6 +47,38 @@ class PostManager extends Manager
        return $newPost;
    }
 
+   public function listPostAdmin(){
+
+        $pdo=$this->dbConnect();
+        $pdoStat= $pdo->prepare('
+        SELECT posts.id,posts.title,DATE_FORMAT(posts.creation_date, \'%d/%m/%Y à %Hh%imin%ss\')
+        AS creation_date_fr,DATE_FORMAT(posts.modification_date, \'%d/%m/%Y à %Hh%imin%ss\')
+        AS modification_date_fr,
+        posts.resume
+        FROM posts');
+        $excuteIsOk= $pdoStat->execute();
+        $posts=$pdoStat->fetchAll();
+        return $posts;
+    }
+
+   public function updatePost($postId){
+       $pdo=$this->dbConnect();
+       $pdoStat=$pdo->prepare('UPDATE posts set title=:title, resume=:resume, content=:content, modification_date = NOW() WHERE id=:num LIMIT 1');
+       $pdoStat->bindValue(':num', $postId,PDO::PARAM_INT);
+       $pdoStat->bindValue(':title', $_POST['title'],PDO::PARAM_STR);
+     $pdoStat->bindValue(':resume', $_POST['resume'],PDO::PARAM_STR);
+       $pdoStat->bindValue(':content', $_POST['content'], PDO::PARAM_STR);
+       $updatedPost=$pdoStat->execute();
+       return $updatedPost;
+
+   }
+
+
+
+
+
+
+
 
 
 

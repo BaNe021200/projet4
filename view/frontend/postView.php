@@ -1,4 +1,5 @@
 <?php $title= htmlspecialchars($post['title']);?>
+<?php $head = ""?>
 <?php ob_start();?>
 <h1>Billet Simple pour l'Alaska</h1>
 <h2>le blog roman de Jean ForteRoche</h2>
@@ -65,7 +66,7 @@ while ($comment = $comments->fetch())
     </a>
     <?php
 }
-
+        
 ?>
 
 

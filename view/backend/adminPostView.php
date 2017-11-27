@@ -1,4 +1,4 @@
-<?php $title="Administration";?>
+<?php $title="Administration Billet";?>
 <?php ob_start();?>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -12,7 +12,7 @@
 
 
 
-<h1>Interface d'administration</h1>
+<h1>Interface d'administration Billets</h1>
 
 
 
@@ -24,8 +24,8 @@
     <th>Titre</th>
     <th>Date de publication</th>
     <th>date de modification</th>
-    <th>nb commentaires déposés</th>
-    <th>nb commentaires à modérer</th>
+    <th>Résumé</th>
+
     <!-- <th invisible>Publier</th>
     <!-- <th invisible>Publier</th>
      <th>Modifier</th>
@@ -34,17 +34,17 @@
 </thead>
 <tbody>
 
-<?php foreach ($nbComments as $nbComment):?>
+<?php foreach ($posts as $post):?>
 <tr>
-    <td><?= $nbComment['id'] ?> </td>
-    <td><?= $nbComment['title'] ?></td>
-    <td><?= $nbComment['creation_date_fr'] ?></td>
-    <td><?= $nbComment['modification_date_fr'] ?></td>
+    <td><?= $post['id'] ?> </td>
+    <td><?= $post['title'] ?></td>
+    <td><?= $post['creation_date_fr'] ?></td>
+    <td><?= $post['modification_date_fr'] ?></td>
 
-    <td><?= $nbComment['nbComment'] ;?></td>
-    <td>5</td>
-    <td><a id="show"  href="show.php?numBillet=<?=$post['id'];   ?>"><button>Aperçu</button></a</td>
-    <td> <a id="modification"  href="modifier.php?numBillet=<?=$post['id'];   ?>"><button>Modifier</button></a></td>
+    <td><?= $post['resume'] ;?></td>
+
+
+    <td> <a id="modification"  href="index.php?action=modificationPost&amp;id=<?= $post['id'] ?>"><button>Modifier</button></a></td>
     <td><a  href="supression.php?numBillet=<?=$post['id'];?>" ><button type="submit" class="del" >Supprimer</button> </a></td>
 
 
