@@ -6,8 +6,9 @@
 <form action="index.php?action=addPost" method="post">
     <p><label for="title" id="title" name="title">Titre</label>
     <input type="text" id="title" name="title"></p>
+
     <p><label for="resume" id="resume" name="resume">Résumé</label>
-    <input type="text" cols="40" onkeyup="this.value = this.value.slice(0, 500)" onchange="this.value = this.value.slice(0, 500)" placeholder="Résumé" name= "resume" id="resume"  ></p>
+  <textarea name="resume" id="resume" ></textarea>
 
 
     <textarea name="content" id="content" cols="30" rows="10"></textarea>

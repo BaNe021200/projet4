@@ -27,8 +27,11 @@ function addComments($postId){
     $commentManager = new CommentManager();
 
 
-    if (isset($_POST['email'])){
-
+    if (empty($_POST['email'])){
+        $comments= $commentManager->postComment($postId);
+        header('Location:index.php?action=post&id='.$postId);
+    }
+    else{
         $_POST['email'] = htmlspecialchars($_POST['email']); // On rend inoffensives les balises HTML que le visiteur a pu rentrer
 
         if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']))
@@ -57,6 +60,6 @@ function reportComment($commentId){
     }else{
         $message= "le commentaire é été signaler à Monsieur ForteRoche";
 
-        header('location:index.php');
+       header('location:index.php');
     }
 }

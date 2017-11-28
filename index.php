@@ -47,8 +47,31 @@ if(isset($_GET['action'])){
 
     }
 
+    elseif($_GET['action']=='deletePost'){
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+            deletePost($_GET['id']);
+        }
+        else {
+            throw new Exception( 'Erreur : aucun identifiant de billet envoyé');
+        }
+
+    }
+
     elseif ($_GET['action'] == 'adminPost'){
         adminPost();
+    }
+
+    elseif ($_GET['action'] == 'editPosts'){
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            editPost();
+        }
+        else {
+            throw new Exception('Erreur : aucun identifiant de billet
+         envoyé');
+        }
+
+
+
     }
 
     elseif ($_GET['action'] == 'addPost'){

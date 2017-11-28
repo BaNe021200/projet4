@@ -24,13 +24,13 @@
 
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>
-        <label for="author">Auteur</label><br />
+        <label for="author">Auteur *</label><br />
         <input type="text" id="author" name="author" />
     </div>
 
 
     <div>
-        <label for="email">Email</label><br />
+        <label for="email">Email (facultatif, votre adresse n'apparaitra pas dans les commentaires)</label><br />
         <input type="text" id="email" name="email" />
     </div>
 
@@ -39,10 +39,11 @@
 
 
     <div>
-        <label for="comment">Commentaire</label><br />
+        <label for="comment">Commentaire *</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
+        <p><em>* Champs requis pour l'envoi de commentaires</em></p>
         <input type="submit" />
     </div>
 </form>

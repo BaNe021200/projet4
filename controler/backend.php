@@ -40,10 +40,29 @@ function updatePosts($postId){
     $postManager = new PostManager();
     $posts= $postManager->updatePost($postId);
     if($posts==false){
-        throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible de modifier le commentaire !");
+        throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible de modifier le billet !");
     }
     else{
         header('Location:index.php?action=adminPost');
     }
+}
+
+function deletePost($postId){
+    $postManager =new PostManager();
+    $posts= $postManager->deletePost($postId);
+    if($posts==false){
+        throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible de supprimer le billet !");
+    }
+    else{
+        header('Location:index.php?action=adminPost');
+    }
+
+
+}
+
+function editPost(){
+    $postManager = new PostManager();
+    $post = $postManager->getPost($_GET['id']);
+    require_once 'view/backend/EditPostView.php';
 
 }

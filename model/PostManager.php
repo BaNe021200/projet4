@@ -73,6 +73,15 @@ class PostManager extends Manager
 
    }
 
+   public function deletePost($postId){
+       $pdo=$this->dbConnect();
+       $pdoStat= $pdo->prepare('DELETE FROM posts WHERE id=:num LIMIT 1');
+       $pdoStat->bindValue(':num', $postId,PDO::PARAM_INT);
+       $deletedPost=$pdoStat->execute();
+       return $deletedPost;
+
+   }
+
 
 
 
