@@ -1,5 +1,5 @@
-<?php $title= htmlspecialchars($post['title']);?>
-<header><a href="index.php?action=adminPost"><button>retour</button></a></header>
+<?php $title="Administration Commentaires"?>
+<header><a href="index.php?action=adminComment"><button>retour</button></a></header>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 
@@ -7,24 +7,27 @@
 <?php ob_start();?>
 
 <div class="news">
+
+
     <h3>
-        <?= htmlspecialchars($post['title']); ?>
+        <?= htmlspecialchars($lambdaComments['author']); ?>
 
     </h3>
     <p>
-        <?= nl2br($post['resume']) ?>
+        <?= nl2br($lambdaComments['email']) ?>
     </p>
 
 
     <p>
-        <?= nl2br($post['content']); ?>
-        <em class="pub"> <?= "publié le ".$post['creation_date_fr']; ?></em>
+        <?= nl2br($lambdaComments['comment']); ?>
     </p>
+
+
 </div>
 
 <!-- Button trigger modal -->
 
-<a id="modification"  href="index.php?action=modificationPost&amp;id=<?= $post['id'] ?>"><button>Modifier</button></a>
+<a id="modification"  href="index.php?action=modificationPost&amp;id=<?= $comment['id'] ?>"><button>Modifier</button></a>
 <button type="button" data-toggle="modal" href="#myModal">Supprimer</button>
 
 
@@ -43,11 +46,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Vous êtes sur point de supprimer le  <?= $post['title'] ?></p>
+                <p>Vous êtes sur point de supprimer le message de <?= $comment['author'] ?></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="index.php?action=deletePost&amp;id=<?= $post['id'] ?>"><button type="button" class="btn btn-primary" >Supprimer</button></a>
+                <a href="index.php?action=deletePost&amp;id=<?= $comment['id'] ?>"><button type="button" class="btn btn-primary" >Supprimer</button></a>
             </div>
         </div>
     </div>

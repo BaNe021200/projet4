@@ -7,6 +7,7 @@ if(isset($_GET['action'])){
     if($_GET['action']=='listPosts'){
         listPosts();
     }
+
     elseif ($_GET['action'] == 'post') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             post();
@@ -16,6 +17,7 @@ if(isset($_GET['action'])){
          envoyé');
         }
     }
+
     elseif ($_GET['action'] == 'addComment') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
@@ -29,6 +31,7 @@ if(isset($_GET['action'])){
             throw new Exception( 'Erreur : aucun identifiant de billet envoyé');
         }
     }
+
     elseif ($_GET['action'] == 'publicationPost'){
         publicationPost();
     }
@@ -61,7 +64,11 @@ if(isset($_GET['action'])){
         adminPost();
     }
 
-    elseif ($_GET['action'] == 'editPosts'){
+    elseif ($_GET['action'] == 'adminComment'){
+        adminComment();
+    }
+
+     elseif ($_GET['action'] == 'editPosts'){
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             editPost();
         }
@@ -69,9 +76,36 @@ if(isset($_GET['action'])){
             throw new Exception('Erreur : aucun identifiant de billet
          envoyé');
         }
+    }
 
+    elseif ($_GET['action'] == 'editComments'){
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+           editComment();
+        }
+        else {
+            throw new Exception('Erreur : aucun identifiant de billet
+         envoyé');
+        }
+    }
 
+    elseif ($_GET['action'] == 'editReportedComments'){
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            editReportedComment();
+        }
+        else {
+            throw new Exception('Erreur : aucun identifiant de billet
+         envoyé');
+        }
+    }
 
+    elseif ($_GET['action'] == 'editLambdaComments'){
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+           editLamdaComment();
+        }
+        else {
+            throw new Exception('Erreur : aucun identifiant de billet
+         envoyé');
+        }
     }
 
     elseif ($_GET['action'] == 'addPost'){

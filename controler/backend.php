@@ -29,6 +29,15 @@ function adminPost(){
     require_once 'view/backend/adminPostView.php';
 }
 
+function adminComment(){
+    $reportedCommentManager= new CommentManager();
+    $reportedComments = $reportedCommentManager->getReportedComments();
+    $commentManager = new CommentManager();
+    $comments=$commentManager->getLambdaComments();
+    require_once 'view/backend/adminCommentView.php';
+
+}
+
 function modifyPost(){
     $postManager = new PostManager() ;
     $posts = $postManager->getPost($_GET['id']);
@@ -50,6 +59,8 @@ function updatePosts($postId){
 function deletePost($postId){
     $postManager =new PostManager();
     $posts= $postManager->deletePost($postId);
+    $commentManager= new CommentManager();
+    $comments= $commentManager->deleteComment($postId);
     if($posts==false){
         throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible de supprimer le billet !");
     }
@@ -64,5 +75,26 @@ function editPost(){
     $postManager = new PostManager();
     $post = $postManager->getPost($_GET['id']);
     require_once 'view/backend/EditPostView.php';
+
+}
+
+function editComment(){
+    $commentManager = new CommentManager();
+    $comments = $commentManager->getComment($_GET['id']);
+    require_once 'view/backend/editReportedCommentView.php';
+
+}
+
+function editReportedComment(){
+    $commentManager = new CommentManager();
+    $reportedComments = $commentManager->getReportedComment($_GET['id']);
+    require_once 'view/backend/editReportedCommentView.php';
+}
+
+function editLamdaComment(){
+    $commentManager = new CommentManager();
+    $lambdaComments = $commentManager->getLambdaComment($_GET['id']);
+    require_once 'view/backend/editLambdaCommentView.php';
+
 
 }

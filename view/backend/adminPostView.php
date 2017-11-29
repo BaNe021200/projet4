@@ -1,5 +1,6 @@
 <?php $title="Administration Billet";?>
-
+<a href="index.php"><button>retour</button></a>
+<a href="index.php?action=adminComment"><button>Commentaires</button></a>
 
 <?php ob_start();?>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -10,7 +11,7 @@
 
 <?php ob_start();?>
 
-<header><a href="index.php"><button>retour</button></a></header>
+
 
 
 

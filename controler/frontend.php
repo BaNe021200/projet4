@@ -18,7 +18,7 @@ function post(){
 
 
     $post = $postManager->getPost($_GET['id']);
-    $comments =$commentManager->getComments($_GET['id']);
+    $comments =$commentManager->getComment($_GET['id']);
     require('view/frontend/postView.php');
 
 }
@@ -30,6 +30,7 @@ function addComments($postId){
     if (empty($_POST['email'])){
         $comments= $commentManager->postComment($postId);
         header('Location:index.php?action=post&id='.$postId);
+
     }
     else{
         $_POST['email'] = htmlspecialchars($_POST['email']); // On rend inoffensives les balises HTML que le visiteur a pu rentrer
@@ -60,6 +61,6 @@ function reportComment($commentId){
     }else{
         $message= "le commentaire é été signaler à Monsieur ForteRoche";
 
-       header('location:index.php');
+        header('location:index.php');
     }
 }

@@ -39,11 +39,11 @@
 
 
     <div>
-        <label for="comment">Commentaire *</label><br />
+        <label for="comment">Commentaire*</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
-        <p><em>* Champs requis pour l'envoi de commentaires</em></p>
+        <p><em>* Obligatoire</em></p>
         <input type="submit" />
     </div>
 </form>
