@@ -61,6 +61,9 @@ function deletePost($postId){
     $posts= $postManager->deletePost($postId);
     $commentManager= new CommentManager();
     $comments= $commentManager->deleteComment($postId);
+    $commentManagerPost = new CommentManager();
+    $commentsPost=$commentManagerPost->deleteCommentsPost($postId);
+
     if($posts==false){
         throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible de supprimer le billet !");
     }
@@ -74,27 +77,26 @@ function deletePost($postId){
 function editPost(){
     $postManager = new PostManager();
     $post = $postManager->getPost($_GET['id']);
+    /*$commentReportedManager = new CommentManager();
+    $reportedComments = $commentReportedManager->getReportedComment($_GET['id']);
+    $commentLambdaManager = new CommentManager();
+    $lambdaComments = $commentLambdaManager->getLambdaComment($_GET['id']);*/
+
+
+
     require_once 'view/backend/EditPostView.php';
 
 }
 
+
+
 function editComment(){
-    $commentManager = new CommentManager();
-    $comments = $commentManager->getComment($_GET['id']);
-    require_once 'view/backend/editReportedCommentView.php';
+    $commentReportedManager = new CommentManager();
+    $reportedComments = $commentReportedManager->getReportedComment($_GET['id']);
+    $commentLambdaManager = new CommentManager();
+    $lambdaComments = $commentLambdaManager->getLambdaComment($_GET['id']);
 
+
+    require_once 'view/backend/editCommentView.php';
 }
 
-function editReportedComment(){
-    $commentManager = new CommentManager();
-    $reportedComments = $commentManager->getReportedComment($_GET['id']);
-    require_once 'view/backend/editReportedCommentView.php';
-}
-
-function editLamdaComment(){
-    $commentManager = new CommentManager();
-    $lambdaComments = $commentManager->getLambdaComment($_GET['id']);
-    require_once 'view/backend/editLambdaCommentView.php';
-
-
-}

@@ -30,7 +30,6 @@
 
 <!-- Button trigger modal -->
 
-<a id="modification"  href="index.php?action=modificationPost&amp;id=<?= $comment['id'] ?>"><button>Modifier</button></a>
 <button type="button" data-toggle="modal" href="#myModal">Supprimer</button>
 
 
@@ -49,11 +48,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Vous êtes sur point de supprimer le message de <?= $comment['author'] ?></p>
+                <p>Vous êtes sur point de supprimer le message de <?= $reportedComments['author'] ?><?= $lambdaComments['author'] ?></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="index.php?action=deletePost&amp;id=<?= $comment['id'] ?>"><button type="button" class="btn btn-primary" >Supprimer</button></a>
+                <a href="index.php?action=deletePost&amp;id=<?= $reportedComments['id'] ?><?= $lambdaComments['id'] ?>"><button type="button" class="btn btn-primary" >Supprimer</button></a>
             </div>
         </div>
     </div>

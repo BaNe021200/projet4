@@ -1,6 +1,8 @@
 <?php $title="PUBLICATION"; ?>
+<?php $head=""; ?>
+
 <?php ob_start();?>
-<h1>Bienvenue dans cet espace de publication</h1>
+<h1>Un nouveau chapitre</h1>
 <p><a href="index.php">Retour à la liste des posts</a></p>
 
 <form action="index.php?action=addPost" method="post">

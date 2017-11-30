@@ -88,7 +88,7 @@ if(isset($_GET['action'])){
         }
     }
 
-    elseif ($_GET['action'] == 'editReportedComments'){
+    /*elseif ($_GET['action'] == 'editReportedComments'){
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             editReportedComment();
         }
@@ -100,13 +100,13 @@ if(isset($_GET['action'])){
 
     elseif ($_GET['action'] == 'editLambdaComments'){
         if (isset($_GET['id']) && $_GET['id'] > 0) {
-           editLamdaComment();
+            editReportedComment();
         }
         else {
             throw new Exception('Erreur : aucun identifiant de billet
          envoyé');
         }
-    }
+    }*/
 
     elseif ($_GET['action'] == 'addPost'){
         if (!empty($_POST['title']) && !empty($_POST['resume']) && !empty($_POST['content'])) {

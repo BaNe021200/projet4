@@ -10,6 +10,7 @@
     <h3>
         <?= htmlspecialchars($post['title']); ?>
 
+
     </h3>
     <p>
         <?= nl2br($post['resume']) ?>
@@ -20,11 +21,17 @@
         <?= nl2br($post['content']); ?>
         <em class="pub"> <?= "publié le ".$post['creation_date_fr']; ?></em>
     </p>
+
+
+
+
+
 </div>
+
 
 <!-- Button trigger modal -->
 
-<a id="modification"  href="index.php?action=modificationPost&amp;id=<?= $post['id'] ?>"><button>Modifier</button></a>
+<a id="modification"  href="index.php?action=modificationPost&amp;id=<?= $post['id'] ?><?= $comments['id'] ?>"><button>Modifier</button></a>
 <button type="button" data-toggle="modal" href="#myModal">Supprimer</button>
 
 

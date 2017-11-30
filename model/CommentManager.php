@@ -123,13 +123,19 @@ class CommentManager extends Manager
 
     }
 
-    public function deleteComment($postId){
+    public function deleteComment($id){
         $pdo=$this->dbConnect();
-        $pdoStat= $pdo->prepare('DELETE FROM comments WHERE id=:num LIMIT 1' );
-        $pdoStat->bindValue(':num', $postId,PDO::PARAM_INT);
+        $pdoStat= $pdo->prepare('DELETE FROM comments WHERE id=:num  LIMIT 1');
+        $pdoStat->bindValue(':num', $id,PDO::PARAM_INT);
         $deletedComment=$pdoStat->execute();
         return $deletedComment;
     }
 
-
+    public function deleteCommentsPost($postId){
+        $pdo=$this->dbConnect();
+        $pdoStat= $pdo->prepare('DELETE FROM comments WHERE postId=:num  ');
+        $pdoStat->bindValue(':num', $postId,PDO::PARAM_INT);
+        $deletedCommentsPost=$pdoStat->execute();
+        return $deletedCommentsPost;
+    }
 }
