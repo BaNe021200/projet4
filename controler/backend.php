@@ -1,9 +1,11 @@
 <?php
 require_once 'model/PostManager.php';
 require_once 'model/CommentManager.php';
+require_once 'model/AdminManager.php';
 
 use model\PostManager;
 use model\CommentManager;
+use model\AdminManager;
 
 function publicationPost(){
     require_once 'view/backend/publicationView.php';
@@ -88,8 +90,6 @@ function editPost(){
 
 }
 
-
-
 function editComment(){
     $commentReportedManager = new CommentManager();
     $reportedComments = $commentReportedManager->getReportedComment($_GET['id']);
@@ -98,5 +98,30 @@ function editComment(){
 
 
     require_once 'view/backend/editCommentView.php';
+}
+
+function adminConnexion(){
+    require_once 'view/backend/adminConnexionView.php';
+}
+
+function authentificationConnexion(){
+    $adminManager= new AdminManager();
+    $passHache=password_hash($_POST['password'],PASSWORD_DEFAULT);var_dump($passHache);die;
+    $AuthentificatedConnexion = $adminManager->getConnexion($passHache);
+
+    if(!$AuthentificatedConnexion){
+
+        echo'Mauvais identifiant ou mot de passe !';
+
+    }
+    else
+    {
+        session_start();
+        $_SESSION['id']=$AuthentificatedConnexion['id'];
+        $_SESSION['login']=$_post['login'];
+        echo'vous êtes connecté';
+
+        require_once 'view/backend/adminPostView.php';
+    }
 }
 

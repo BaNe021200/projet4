@@ -3,7 +3,7 @@
 
 
 <?php ob_start(); ?>
-   <header> <a href="index.php?action=adminPost"><button>Connexion</button></a></header>
+   <header> <a href="index.php?action=adminConnexion"><button>Connexion</button></a></header>
     <h1>Billet Simple pour l'Alaska</h1>
     <h2>le blog roman de Jean ForteRoche</h2>
 
