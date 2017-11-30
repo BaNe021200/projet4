@@ -11,15 +11,18 @@
 
     <h3>
         <?= htmlspecialchars($reportedComments['author']); ?>
+        <?= htmlspecialchars($lambdaComments['author']); ?>
 
     </h3>
     <p>
         <?= nl2br($reportedComments['email']) ?>
+        <?= nl2br($lambdaComments['email']) ?>
     </p>
 
 
     <p>
         <?= nl2br($reportedComments['comment']); ?>
+        <?= nl2br($lambdaComments['comment']); ?>
     </p>
 
 
