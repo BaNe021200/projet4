@@ -19,7 +19,15 @@ if(isset($_GET['action'])){
     }
 
     elseif ($_GET['action'] == 'adminConnexion') {
-        adminConnexion();
+        if(!isset($_COOKIE['ID']) && !isset($_COOKIE['Login'])){
+            adminConnexion();
+        }
+
+        else{
+            adminPost();
+        }
+
+
     }
 
     elseif ($_GET['action'] == 'authentificationConnexion'){

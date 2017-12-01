@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php $title="Administration billets"; ?>
 <?php $head = ""?>
 <?php ob_start();?>

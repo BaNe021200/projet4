@@ -104,7 +104,7 @@ function adminConnexion(){
     require_once 'view/backend/adminConnexionView.php';
 }
 
-function authentificationConnexion(){
+/*function authentificationConnexion(){
     $adminManager= new AdminManager();
     $passHache=password_hash($_POST['password'],PASSWORD_DEFAULT);var_dump($passHache);die;
     $AuthentificatedConnexion = $adminManager->getConnexion($passHache);
@@ -123,5 +123,15 @@ function authentificationConnexion(){
 
         require_once 'view/backend/adminPostView.php';
     }
+}*/
+
+function authentificationConnexion(){
+    $adminManager= new AdminManager();
+    $authentification = $adminManager->getConnexion();
+
 }
+
+
+
+
 

@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php $title = "Bilet simple pour l'alaska"; ?>
 <?php $head = ""?>
 

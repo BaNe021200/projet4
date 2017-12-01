@@ -2,3 +2,5 @@
 .idea/
 connexion.php
 connexionForm.php
+authentification.php
+authentificationForm.php

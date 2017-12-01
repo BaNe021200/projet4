@@ -1,3 +1,4 @@
+<?php session_start()?>
 <?php $title="Administration Commentaires";?>
 <a href="index.php"><button>retour</button></a>
 <a href="index.php?action=adminPost"><button>Billets</button></a>
