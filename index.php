@@ -18,6 +18,20 @@ if(isset($_GET['action'])){
         }
     }
 
+    elseif ($_GET['action'] == 'signIn'){
+        signIn();
+    }
+
+    elseif ($_GET['action'] == 'getSignIn'){
+        if(!empty($_POST['login']) && !empty($_POST['password'])){
+            getSignIn();
+        }else{
+            throw new Exception("Tous les champs ne sont pas remplis");
+        }
+
+
+    }
+
     elseif ($_GET['action'] == 'adminConnexion') {
         if(!isset($_COOKIE['ID']) && !isset($_COOKIE['Login'])){
             adminConnexion();

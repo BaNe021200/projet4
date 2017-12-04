@@ -17,7 +17,7 @@
 </p>
 
 
-<input type="submit" value="Sign in !">
+<input type="submit" value="Sign up !">
 </form>
 
 <?php $content = ob_get_clean();?>
