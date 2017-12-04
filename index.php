@@ -24,7 +24,15 @@ if(isset($_GET['action'])){
 
     elseif ($_GET['action'] == 'getSignIn'){
         if(!empty($_POST['login']) && !empty($_POST['password'])){
-            getSignIn();
+            if($_POST['password']===$_POST['password2']){
+
+                getSignIn();
+            }
+            else
+            {
+                throw new Exception('Les deux mots de passe sont différents');
+            }
+
         }else{
             throw new Exception("Tous les champs ne sont pas remplis");
         }

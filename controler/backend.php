@@ -138,13 +138,15 @@ function signIn(){
 function getSignIn(){
     $adminManager = new AdminManager();
     $getLogin= $adminManager->getLogin();
-
     if($getLogin==false){
         throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible d'insérer vos idenfiants !");
     }
     else{
         header('Location:index.php?action=authentificationConnexion');
     }
+
+
+
 }
 
 
