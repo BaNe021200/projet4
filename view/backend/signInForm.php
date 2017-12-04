@@ -26,6 +26,12 @@
     <input type="password" name="password" id="password">
 
     </p>
+
+    <p>
+        <label for="password">confirmation du mot de passe</label>
+        <input type="password" name="password2" id="password2">
+
+    </p>
 <input type="submit" value="GO !">
 </form>
 </body>
