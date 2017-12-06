@@ -1,35 +1,51 @@
 <?php session_start()?>
 <?php $title = "Bilet simple pour l'alaska"; ?>
-<?php $head = ""?>
+<?php $blogTitle = "Bilet simple pour l'alaska"; ?>
+<?php $blogSubTitle = "le blog roman";?>
+
+<?php $subheading="par Jean ForteRoche";?>
+<?php $image = "public/img/home-bg2.jpg"?>
+
 
 
 <?php ob_start(); ?>
-   <header> <a href="index.php?action=adminConnexion"><button>Connexion</button></a></header>
-    <h1>Billet Simple pour l'Alaska</h1>
-    <h2>le blog roman de Jean ForteRoche</h2>
+
 
 
 <?php
 while ($data = $posts->fetch())
 {
     ?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-
-        </h3>
-
-        <p>
+    <div class="post-preview">
+    <a href="index.php?action=post&amp;id=<?= $data['id'] ?>">
+        <h2 class="post-title">
+            <?= nl2br(htmlspecialchars($data['title'])) ?>
+        </h2>
+        <h4 class="post-subtitle">
             <?= nl2br($data['resume']) ?>
-            <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire le chapître et/ou laisser des commentaires</a></em>
-        </p>
+        </h4>
+    </a>
+    <p class="post-meta">Posted by
+        <a href="#">Jean Forteroche</a>
+       <?= $data['creation_date_fr'] ?></p>
+
+        <br />
+        <hr>
     </div>
+
+
+
     <?php
 }
 $posts->closeCursor();
 ?>
 
 <?php $content = ob_get_clean(); ?>
+<?php ob_start();?>
+    <div class="clearfix">
+        <a class="btn btn-secondary float-right" href="index.php">Retour &rarr;</a>
+    </div>
 
-<?php require_once'view/frontend/template.php'; ?>
+<?php $backButton = ob_get_clean();?>
+
+<?php require_once'view/frontend/templateListPostView.php'?>

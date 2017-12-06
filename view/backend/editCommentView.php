@@ -1,15 +1,15 @@
 <?php session_start()?>
 <?php $title="Administration Commentaires"?>
 
-<header><a href="index.php?action=adminComment"><button>retour</button></a></header>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<?php $blogTitle = "Interface de modification"; ?>
+<?php $blogSubTitle = "Copmmentaires";?>
 
-
-<?php $head = ob_get_clean(); ?>
+<?php $subheading="Tremblez billets...votre heure à sonnée";?>
+<?php $image = "public/img/contact-bg2.jpg"?>
 <?php ob_start();?>
 
-<div class="news">
-
+<article>
+    <div class="col-lg-8 col-md-10 mx-auto">
 
     <h3>
         <?= htmlspecialchars($reportedComments['author']); ?>
@@ -28,7 +28,7 @@
     </p>
 
 
-</div>
+
 
 <!-- Button trigger modal -->
 
@@ -53,16 +53,21 @@
                 <p>Vous êtes sur point de supprimer le message de <?= $reportedComments['author'] ?><?= $lambdaComments['author'] ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="index.php?action=deletePost&amp;id=<?= $reportedComments['id'] ?><?= $lambdaComments['id'] ?>"><button type="button" class="btn btn-primary" >Supprimer</button></a>
+                <button type="button"  id="cancelButton" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <a href="index.php?action=deletePost&amp;id=<?= $reportedComments['id'] ?><?= $lambdaComments['id'] ?>"><button type="button" class="btn btn-primary"id="Delbutton">Supprimer</button></a>
             </div>
         </div>
     </div>
+  </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
+</article>
 <?php $content= ob_get_clean();?>
-<?php require_once 'view/frontend/template.php';?>
+<?php ob_start();?>
+<div class="clearfix">
+    <a class="btn btn-secondary float-right" href="index.php?action=adminComment">Retour &rarr;</a>
+</div>
+
+<?php $backButton = ob_get_clean();?>
+
+<?php require_once'view/backend/templateAdminPostView.php'?>
 

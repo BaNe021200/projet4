@@ -30,7 +30,8 @@ if(isset($_GET['action'])){
             }
             else
             {
-                throw new Exception('Les deux mots de passe sont différents');
+               // throw new Exception('Les deux mots de passe sont différents');
+                require ('view/frontend/connexionErrorView.php');
             }
 
         }else{
@@ -52,9 +53,20 @@ if(isset($_GET['action'])){
 
     }
 
-    elseif ($_GET['action'] == 'authentificationConnexion'){
+    elseif ($_GET['action'] == 'adminDeconnexion'){
+        signOut();
 
-        authentificationConnexion();
+
+    }
+
+    elseif ($_GET['action'] == 'authentificationConnexion'){
+        if(!empty($_POST['login']) && !empty($_POST['password'])){
+            authentificationConnexion();
+        }
+        else
+        {
+            throw new Exception("Tous les champs ne sont pas remplis");
+        }
 
     }
 
@@ -101,11 +113,24 @@ if(isset($_GET['action'])){
     }
 
     elseif ($_GET['action'] == 'adminPost'){
-        adminPost();
+        if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])){
+            adminPost();
+        }
+        else
+        {
+            throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
+        }
+
     }
 
     elseif ($_GET['action'] == 'adminComment'){
-        adminComment();
+        if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
+            adminComment();
+        }
+        else
+        {
+            throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
+        }
     }
 
      elseif ($_GET['action'] == 'editPosts'){
@@ -176,4 +201,5 @@ else{
 catch(Exception $e){
     $errorMessage= $e->getMessage();
     require('view/frontend/errorView.php');
+
 }

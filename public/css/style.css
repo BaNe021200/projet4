@@ -1,45 +1,7 @@
-h1,h2, h3
-{
-    text-align:center;
-}
-h3
-{
-    background-color: #31ecec;
-    color:white;
-    font-size:0.9em;
-    margin-bottom:0px;
-}
-.news p
-{
-    background-color:#CCCCCC;
-    margin-top:0px;
-}
-.news
-{
-    width:70%;
-    margin:auto;
+#Delbutton{
+    background-color: #c82333;
 }
 
-a
-{
-    text-decoration: none;
-    color: blue;
-}
-
-.pub
-{
-    display: block;
-    text-align: right;
-}
-
-.center
-{
-    text-align: center;
-}
-
-
-header
-{
-    display: flex;
-    justify-content: flex-end;
+#cancelButton{
+    background-color: cornflowerblue;
 }

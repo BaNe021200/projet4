@@ -1,75 +1,107 @@
 <?php $title= htmlspecialchars($post['title']);?>
-<?php $head = ""?>
+<?php $blogTitle = "Bilet simple pour l'alaska"; ?>
+<?php $blogSubTitle = "le blog roman";?>
+
+<?php $subheading="par Jean ForteRoche";?>
+<?php $image = "public/img/post-bg2.jpg"?>
+
 <?php ob_start();?>
-<h1>Billet Simple pour l'Alaska</h1>
-<h2>le blog roman de Jean ForteRoche</h2>
-<p><a href="index.php">Retour à la liste des posts</a></p>
 
 
-<div class="news">
-    <h3>
-        <?= htmlspecialchars($post['title']); ?>
+<article>
 
-    </h3>
+            <div class="col-lg-8 col-md-10 mx-auto">
 
-    <p>
-        <?= nl2br($post['content']); ?>
-        <em class="pub"> <?= "publié le ".$post['creation_date_fr']; ?></em>
-    </p>
-</div>
+                <h3>
+                    <?= htmlspecialchars($post['title']); ?>
 
-<h2>Commentaires</h2>
+                </h3>
 
-
-
-<form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-    <div>
-        <label for="author">Pseudo *</label><br />
-        <input type="text" id="author" name="author" />
-    </div>
+                <p>
+                    <?= nl2br($post['content']); ?>
+                    <em> <?= "publié le ".$post['creation_date_fr']; ?></em>
+                </p>
 
 
-    <div>
-        <label for="email">Email (facultatif, votre adresse n'apparaitra pas dans les commentaires)</label><br />
-        <input type="text" id="email" name="email" />
-    </div>
+            <div id="comment">
+
+            <p><h2>Commentaires</h2></p>
 
 
 
+            <form id="contactForm" name="sentMessage" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Pseudo *</label>
+                        <input class="form-control" type="text" id="author" name="author" placeholder="Pseudo*" />
+
+                        <p class="help-block text-danger"></p>
+                </div>
+                </div>
 
 
-    <div>
-        <label for="comment">Commentaire*</label><br />
-        <textarea id="comment" name="comment"></textarea>
-    </div>
-    <div>
-        <p><em>* Obligatoire</em></p>
-        <input type="submit" />
-    </div>
-</form>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="email">Email (facultatif, votre adresse n'apparaitra pas dans les commentaires)</label><br />
+                        <input type="text" id="email" name="email" placeholder="Email (facultatif)" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
 
-<?php
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label for="comment">Commentaire*</label><br />
+                        <textarea id="comment"  class="form-control" name="comment" placeholder="Commentaire*"></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
 
-while ($comment = $comments->fetch())
-{
-    ?>
+                <div class="form-group">
+                    <p><em>* Obligatoire</em></p>
+                    <input type="submit" />
+                </div></div>
 
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    </form>
 
-    <a href="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>">
-        <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post">
-          <input type="hidden" name="reportedComment" id="id" value="1">
+            <?php
 
-            <input type="submit" value="Signaler">
-        </form>
+            while ($comment = $comments->fetch())
+            {
+                ?>
 
-    </a>
-    <?php
-}
-        
-?>
+                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+
+                <a href="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>">
+                    <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post">
+                        <input type="hidden" name="reportedComment" id="id" value="1">
+
+                        <input type="submit" value="Signaler">
+                    </form>
+
+                </a>
+                <?php
+            }
+
+            ?>
+
+
+
+
+
+            </div>
+</article>
+
 
 
 <?php $content= ob_get_clean();?>
-<?php require_once 'view/frontend/template.php';?>
+
+<?php ob_start();?>
+<div class="clearfix">
+    <a class="btn btn-secondary float-right" href="index.php">Retour &rarr;</a>
+</div>
+
+<?php $backButton = ob_get_clean();?>
+
+
+<?php require_once 'view/frontend/templateListPostView.php';?>

@@ -1,22 +1,21 @@
 <?php session_start()?>
-<?php $title="Administration Billet";?>
-<a href="index.php"><button>retour</button></a>
+<?php $title="Administration Billets";?>
+<?php $blogTitle ="The BackEnd" ; ?>
+<?php $blogSubTitle = "The dark side of the blog";?>
+
+
+<?php $image = "public/img/about-bg3.jpg"?>
+<?php $subheading= "les billets";?>
+
+
+<?php ob_start();?>
 <a href="index.php?action=adminComment"><button>Commentaires</button></a>
 
-<?php ob_start();?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
 
-<?php $head = ob_get_clean(); ?>
+<div class="post-preview">
 
-
-<?php ob_start();?>
-
-
-
-
-
-<h1>Interface d'administration Billets</h1>
+<h2>Récapitulatif d'une certaine situation à un instant non moins incertain</h2>
 
 
 
@@ -49,6 +48,7 @@
     <td><a href="index.php?action=editPosts&amp;id=<?= $post['id'] ?>"><button>Edit</button></a></td>
 
 
+
 <?php endforeach;?>
 
     </tr>
@@ -58,9 +58,14 @@
 
 
     <p class="text-center"><a href="index.php?action=publicationPost"><button>Publier</button></a></p>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</div>
 
-<?php $content = ob_get_clean()?>
-<?php require_once 'view/frontend/template.php';?>
+<?php $content = ob_get_clean(); ?>
+<?php ob_start();?>
+<div class="clearfix">
+    <a class="btn btn-secondary float-right" href="index.php">Retour &rarr;</a>
+</div>
+
+<?php $backButton = ob_get_clean();?>
+
+<?php require_once'view/backend/templateAdminPostView.php'?>

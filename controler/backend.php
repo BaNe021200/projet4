@@ -70,7 +70,7 @@ function deletePost($postId){
         throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible de supprimer le billet !");
     }
     else{
-        header('Location:index.php?action=adminPost');
+        header('Location:index.php?action=adminComment');
     }
 
 
@@ -147,6 +147,12 @@ function getSignIn(){
 
 
 
+}
+
+function signOut(){
+    $adminManager= new AdminManager();
+    $getOut = $adminManager->disconnect();
+    header('Location:index.php');
 }
 
 

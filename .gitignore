@@ -3,3 +3,16 @@
 
 authentification.php
 authentificationForm.php
+listPostsView - Copie.php
+adminPostView - Copie.php
+adminCommentView - Copie.php
+EditPostView - Copie.php
+publicationView - Copie.php
+modifyPostView - Copie.php
+adminConnexionView - Copie.php
+editCommentView - Copie.php
+img/
+vendor/
+gulpfile.js
+package.json
+public/js/

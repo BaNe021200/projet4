@@ -33,8 +33,9 @@ class AdminManager extends Manager
 
             if(!$connexionIsOk){
 
-               header('Location:index.php?action=adminConnexion');
-                echo'Mauvais identifiant ou mot de passe !';
+             header('Location:index.php?action=adminConnexion');
+               // echo'Mauvais identifiant ou mot de passe !';
+
 
 
             }
@@ -59,6 +60,34 @@ class AdminManager extends Manager
 
         $connexionStat=$pdoStat->execute();
         return $connexionStat;
+
+    }
+
+    public function disconnect(){
+        session_abort();
+        setcookie("ID","", time()- 60);
+        setcookie("Login","", time()- 60);
+
+    }
+
+    public function register(){
+        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $login = $post['login'];
+        $password = md5($post['password']);
+        if($post['submit']){
+            if($login === '' || $password === '') {
+                echo 'les champs ne sont pas tous remplis';
+            }
+            $pdo= $this->dbConnect();
+            $pdoStat=$pdo->prepare('INSERT INTO admin VALUES(NULL,:login,:password)');
+            $pdoStat->bindValue(':login', $login,PDO::PARAM_STR);
+            $pdoStat->bindValue(':password', $password,PDO::PARAM_STR);
+
+            $connexionStat=$pdoStat->execute();
+            return $connexionStat;
+
+        }
 
     }
 

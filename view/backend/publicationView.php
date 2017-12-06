@@ -1,24 +1,44 @@
 <?php session_start()?>
 <?php $title="PUBLICATION"; ?>
-<?php $head=""; ?>
+<?php $blogTitle = "Interface de publication"; ?>
+<?php $blogSubTitle = "";?>
+
+<?php $subheading="Que le fil de l'histoire soit ici tissé";?>
+<?php $image = "public/img/home-bg.jpg"?>
+
 
 <?php ob_start();?>
-<h1>Un nouveau chapitre</h1>
-<p><a href="index.php">Retour à la liste des posts</a></p>
+
+<div class="col-lg-8 col-md-10 mx-auto">
 
 <form action="index.php?action=addPost" method="post">
-    <p><label for="title" id="title" name="title">Titre</label>
-    <input type="text" id="title" name="title"></p>
+    <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+    <label>Titre</label>
+    <input type="text" id="title" name="title" class="form-control" placeholder="Titre">
+            <p class="help-block text-danger"></p>
+        </div>
+    </div>
 
-    <p><label for="resume" id="resume" name="resume">Résumé</label>
-  <textarea name="resume" id="resume" ></textarea>
+    <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+    <label for="resume" id="resume" name="resume" >Résumé</label>
+    <textarea name="resume" maxlength="500" rows="10" cols="40"  id="resume" class="form-control" placeholder="Résumé"></textarea>
+            <p class="help-block text-danger"></p>
+        </div>
+    </div>
 
-
-    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+    <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+    <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+        <p class="help-block text-danger"></p>
+    </div>
+    </div>
 
     <p>  <input type="submit" value="Publier !"></p>
     
 </form>
+
 <!--  TinyMCE  -->
 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=p74lb65ajgvm73tkq4k93a0epdnlkptwe4qjdwwhnssg3i93"></script>
@@ -32,5 +52,12 @@
 
 </script>
 <?php $content= ob_get_clean();?>
-<?php require_once 'view/frontend/template.php';?>
+    <?php ob_start();?>
+    <div class="clearfix">
+        <a class="btn btn-secondary float-right" href="index.php?action=adminPost">Retour &rarr;</a>
+    </div>
+
+    <?php $backButton = ob_get_clean();?>
+
+    <?php require_once'view/backend/templateAdminPostView.php'?>
 
