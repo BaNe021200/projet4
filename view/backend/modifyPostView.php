@@ -2,7 +2,8 @@
 <?php $title="MODIFICATION"; ?>
 <?php $blogTitle = "Interface de modification"; ?>
 <?php $blogSubTitle = "";?>
-
+<?php $connexion = 'index.php?action=adminDeconnexion' ?>
+<?php $typeConnexion = "Deconnexion" ?>
 <?php $subheading="Tremblez billets...votre heure à sonnée";?>
 <?php $image = "public/img/home-bg.jpg"?>
 

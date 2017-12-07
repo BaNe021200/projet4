@@ -1,7 +1,8 @@
 <?php $title="connexion";?>
 <?php $blogTitle = ""; ?>
 <?php $blogSubTitle = "Bienvenue Monsieur Forteroche";?>
-
+<?php $connexion = '' ?>
+<?php $typeConnexion = "" ?>
 <?php $subheading="Merci de bien vouloir entrer vos identifiants";?>
 <?php $image = "public/img/home-bg.jpg"?>
 <?php ob_start();?>

@@ -1,9 +1,11 @@
 <?php session_start()?>
 <?php $title="Administration Commentaires"?>
-
+<?php $connexion = '' ?>
+<?php $typeConnexion = "" ?>
 <?php $blogTitle = "Interface de modification"; ?>
-<?php $blogSubTitle = "Copmmentaires";?>
-
+<?php $blogSubTitle = "Commentaires";?>
+<?php $connexion = 'index.php?action=adminDeconnexion' ?>
+<?php $typeConnexion = "Deconnexion" ?>
 <?php $subheading="Tremblez billets...votre heure à sonnée";?>
 <?php $image = "public/img/contact-bg2.jpg"?>
 <?php ob_start();?>

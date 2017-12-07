@@ -67,12 +67,12 @@ class CommentManager extends Manager
     public function  getLambdaComments(){
         $pdo= $this->dbConnect();
         $pdoStat=$pdo->query('
-        SELECT posts.title,comments.id, postId, author, email,comment,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr,reportedComment
+        SELECT posts.title,comments.id, postId, author, email,comment,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr,reportedComment
         FROM comments
         INNER JOIN posts
         ON comments.postId = posts.id
         WHERE comments.reportedComment=0
-        ORDER BY  comments.reportedComment DESC');
+        ORDER BY  comments.comment_date DESC');
         $pdoStat->execute();
         return $pdoStat;
 
@@ -82,12 +82,12 @@ class CommentManager extends Manager
     public function  getReportedComments(){
         $pdo= $this->dbConnect();
         $pdoStat=$pdo->query('
-        SELECT comments.id,posts.title, postId, author, email,comment,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr,reportedComment
+        SELECT comments.id,posts.title, postId, author, email,comment,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr,reportedComment
         FROM comments
         INNER JOIN posts
         ON comments.postId = posts.id
         WHERE comments.reportedComment=1
-        ORDER BY  comments.reportedComment DESC');
+        ORDER BY  comments.comment_date DESC ');
         return $pdoStat;
 
     }

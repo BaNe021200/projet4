@@ -128,6 +128,21 @@ function adminConnexion(){
 function authentificationConnexion(){
     $adminManager= new AdminManager();
     $authentification = $adminManager->getConnexion();
+    if(!$authentification){
+
+        //header('Location:index.php?action=adminConnexion');
+        // echo'Mauvais identifiant ou mot de passe !';
+        throw new Exception('Mauvais identifiant ou mot de passe !');
+
+
+
+    }
+
+
+
+
+
+
 
 }
 
@@ -136,14 +151,21 @@ function signIn(){
 }
 
 function getSignIn(){
-    $adminManager = new AdminManager();
-    $getLogin= $adminManager->getLogin();
-    if($getLogin==false){
-        throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible d'insérer vos idenfiants !");
-    }
-    else{
-        header('Location:index.php?action=authentificationConnexion');
-    }
+
+
+
+        $adminManager = new AdminManager();
+        $getLogin= $adminManager->getLogin();
+        if($getLogin==false){
+            throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible d'insérer vos idenfiants !");
+        }
+        else{
+            header('Location:index.php?action=adminConnexion');
+        }
+
+
+
+
 
 
 

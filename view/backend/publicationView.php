@@ -2,7 +2,8 @@
 <?php $title="PUBLICATION"; ?>
 <?php $blogTitle = "Interface de publication"; ?>
 <?php $blogSubTitle = "";?>
-
+<?php $connexion = 'index.php?action=adminDeconnexion' ?>
+<?php $typeConnexion = "Deconnexion" ?>
 <?php $subheading="Que le fil de l'histoire soit ici tissé";?>
 <?php $image = "public/img/home-bg.jpg"?>
 

@@ -1,9 +1,11 @@
-<?php $title="Erreur !";?>
+<?php $title = "Erreur !";?>
 <?php $blogTitle = ""; ?>
-<?php $blogSubTitle = "Bienvenue Monsieur Forteroche";?>
+<?php $blogSubTitle = "Il ya du soucis à se faire";?>
+<?php $connexion = '' ?>
+<?php $typeConnexion = "" ?>
 
-<?php $subheading="Merci de bien vouloir entrer vos identifiants";?>
-<?php $image = "public/img/home-bg.jpg"?>
+<?php $subheading="Rien ne va plus !";?>
+<?php $image = "public/img/contact-bg.jpg"?>
 <?php ob_start();?>
 
 <div class="col-lg-8 col-md-10 mx-auto">

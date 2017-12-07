@@ -4,8 +4,8 @@
 <?php $blogTitle ="The BackEnd" ; ?>
 <?php $blogSubTitle = "The dark side of the blog";?>
 <?php $subheading="les commentaires" ?>
-
-
+<?php $connexion = 'index.php?action=adminDeconnexion' ?>
+<?php $typeConnexion = "Deconnexion" ?>
 
 
 

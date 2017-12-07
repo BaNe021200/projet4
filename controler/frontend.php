@@ -47,7 +47,9 @@ function addComments($postId){
         }
         else
         {
-            echo 'L\'adresse ' . $_POST['email'] . ' n\'est pas valide, recommencez !';
+
+            throw new Exception ('L\'adresse ' . $_POST['email'] . ' n\'est pas valide, recommencez !');
+            //echo 'L\'adresse ' . $_POST['email'] . ' n\'est pas valide, recommencez !';
         }
     }
 }

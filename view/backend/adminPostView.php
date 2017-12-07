@@ -2,6 +2,8 @@
 <?php $title="Administration Billets";?>
 <?php $blogTitle ="The BackEnd" ; ?>
 <?php $blogSubTitle = "The dark side of the blog";?>
+<?php $connexion = 'index.php?action=adminDeconnexion' ?>
+<?php $typeConnexion = "Deconnexion" ?>
 
 
 <?php $image = "public/img/about-bg3.jpg"?>

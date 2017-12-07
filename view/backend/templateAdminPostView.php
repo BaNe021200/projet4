@@ -45,7 +45,7 @@
                      <a class="nav-link" href="post.html">Sample Post</a>
                    </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $connexion='index.php?action=adminDeconnexion' ?>"><?= $typeConnexion="Deconnexion" ?></a>
+                    <a class="nav-link" href="<?= $connexion ?>"><?= $typeConnexion ?></a>
                 </li>
             </ul>
         </div>

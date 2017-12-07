@@ -1,7 +1,8 @@
 <?php $title= htmlspecialchars($post['title']);?>
 <?php $blogTitle = "Bilet simple pour l'alaska"; ?>
 <?php $blogSubTitle = "le blog roman";?>
-
+<?php $connexion = 'index.php?action=adminConnexion' ?>
+<?php $typeConnexion = "Connexion" ?>
 <?php $subheading="par Jean ForteRoche";?>
 <?php $image = "public/img/post-bg2.jpg"?>
 

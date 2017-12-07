@@ -1,7 +1,8 @@
 <?php $title="connexion";?>
 <?php $head="";?>
 <?php ob_start();?>
-
+<?php $connexion = 'index.php?action=adminDeconnexion' ?>
+<?php $typeConnexion = "Deconnexion" ?>
 <h1>Interface d'inscription</h1>
 <h3>Bonjour Monsieur Forteroche merci de bien vouloir créer vos identifiants</h3>
 

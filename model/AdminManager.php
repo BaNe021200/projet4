@@ -31,22 +31,23 @@ class AdminManager extends Manager
         $connexionSucces = $pdoStat->execute();
         $connexionIsOk = $pdoStat->fetch();
 
-            if(!$connexionIsOk){
+            /*if(!$connexionIsOk){
 
              header('Location:index.php?action=adminConnexion');
                // echo'Mauvais identifiant ou mot de passe !';
 
 
 
-            }
-            else
+            }*/
+            if($connexionIsOk)
+            /*else*/
             {
                 session_start();
                 $_SESSION['id']=$connexionIsOk['id'];
                 $_SESSION['login']= $_POST['login'];
                 setcookie("ID",$_SESSION['id'], time() + 3600*24*365,null, null, false, true);
                 setcookie("Login",$_SESSION['login'], time() + 3600*24*365,null, null, false, true);
-                echo'vous êtes connecté';
+
 
                 header('Location:index.php?action=adminPost');
             }

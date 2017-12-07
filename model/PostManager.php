@@ -22,7 +22,7 @@ class PostManager extends Manager
     $db=$this->dbConnect();
 
 // Récupération du post
-    $req = $db->prepare('SELECT id, title,resume, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+    $req = $db->prepare('SELECT id, title,resume, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts WHERE id = ?');
     $req->execute(array($postId));
     $post = $req->fetch();
     return $post;
@@ -42,8 +42,8 @@ class PostManager extends Manager
 
         $pdo=$this->dbConnect();
         $pdoStat= $pdo->prepare('
-        SELECT posts.id,posts.title,DATE_FORMAT(posts.creation_date, \'%d/%m/%Y à %Hh%imin%ss\')
-        AS creation_date_fr,DATE_FORMAT(posts.modification_date, \'%d/%m/%Y à %Hh%imin%ss\')
+        SELECT posts.id,posts.title,DATE_FORMAT(posts.creation_date, \'%d/%m/%Y à %Hh%i\')
+        AS creation_date_fr,DATE_FORMAT(posts.modification_date, \'%d/%m/%Y à %Hh%i\')
         AS modification_date_fr,
         posts.resume
         FROM posts');

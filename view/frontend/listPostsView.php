@@ -2,7 +2,8 @@
 <?php $title = "Bilet simple pour l'alaska"; ?>
 <?php $blogTitle = "Bilet simple pour l'alaska"; ?>
 <?php $blogSubTitle = "le blog roman";?>
-
+<?php $connexion = 'index.php?action=adminConnexion' ?>
+<?php $typeConnexion = "Connexion" ?>
 <?php $subheading="par Jean ForteRoche";?>
 <?php $image = "public/img/home-bg2.jpg"?>
 
@@ -25,7 +26,7 @@ while ($data = $posts->fetch())
             <?= nl2br($data['resume']) ?>
         </h4>
     </a>
-    <p class="post-meta">Posted by
+    <p class="post-meta">Publié par
         <a href="#">Jean Forteroche</a>
        <?= $data['creation_date_fr'] ?></p>
 

@@ -2,7 +2,8 @@
 <?php $title= htmlspecialchars($post['title']);?>
 <?php $blogTitle = "Interface de modification"; ?>
 <?php $blogSubTitle = "Billets";?>
-
+<?php $connexion = 'index.php?action=adminDeconnexion' ?>
+<?php $typeConnexion = "Deconnexion" ?>
 <?php $subheading="Tremblez billets...votre heure à sonnée";?>
 <?php $image = "public/img/contact-bg2.jpg"?>
 

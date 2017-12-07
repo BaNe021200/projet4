@@ -23,23 +23,26 @@ if(isset($_GET['action'])){
     }
 
     elseif ($_GET['action'] == 'getSignIn'){
-        if(!empty($_POST['login']) && !empty($_POST['password'])){
+        if(isset($_POST['login']) || isset($_POST['password'])){
             if($_POST['password']===$_POST['password2']){
 
                 getSignIn();
             }
             else
             {
-               // throw new Exception('Les deux mots de passe sont différents');
-                require ('view/frontend/connexionErrorView.php');
+               throw new Exception('Les deux mots de passe sont différents');
+                //require ('view/frontend/connexionErrorView.php');
             }
 
-        }else{
+        }
+        else{
             throw new Exception("Tous les champs ne sont pas remplis");
         }
 
 
     }
+
+
 
     elseif ($_GET['action'] == 'adminConnexion') {
         if(!isset($_COOKIE['ID']) && !isset($_COOKIE['Login'])){
@@ -65,7 +68,7 @@ if(isset($_GET['action'])){
         }
         else
         {
-            throw new Exception("Tous les champs ne sont pas remplis");
+            throw new Exception("Tous les champs ne sont pas renseignés");
         }
 
     }
