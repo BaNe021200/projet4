@@ -1,5 +1,5 @@
 <?php $title= htmlspecialchars($post['title']);?>
-<?php $blogTitle = "Bilet simple pour l'alaska"; ?>
+<?php $blogTitle = "Billet simple pour l'alaska"; ?>
 <?php $blogSubTitle = "le blog roman";?>
 <?php $connexion = 'index.php?action=adminConnexion' ?>
 <?php $typeConnexion = "Connexion" ?>

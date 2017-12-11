@@ -25,8 +25,14 @@ if(isset($_GET['action'])){
     elseif ($_GET['action'] == 'getSignIn'){
         if(isset($_POST['login']) || isset($_POST['password'])){
             if($_POST['password']===$_POST['password2']){
+                if(!empty($_POST['password'])&& !empty($_POST['password2'])){
+                    getSignIn();
+                }
+                else{
+                    throw new Exception('Les champs mots de passe ne peuvent être vide !');
+                }
 
-                getSignIn();
+
             }
             else
             {
@@ -41,8 +47,6 @@ if(isset($_GET['action'])){
 
 
     }
-
-
 
     elseif ($_GET['action'] == 'adminConnexion') {
         if(!isset($_COOKIE['ID']) && !isset($_COOKIE['Login'])){
@@ -88,11 +92,27 @@ if(isset($_GET['action'])){
     }
 
     elseif ($_GET['action'] == 'publicationPost'){
-        publicationPost();
+        if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
+
+            publicationPost();
+        }
+        else{
+            throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
+
+        }
     }
 
     elseif ($_GET['action']== 'modificationPost'){
-        modifyPost();
+        if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
+
+            modifyPost();
+
+        }
+        else{
+            throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
+
+
+        }
     }
 
     elseif ($_GET['action'] =='modifyPost'){
@@ -137,44 +157,38 @@ if(isset($_GET['action'])){
     }
 
      elseif ($_GET['action'] == 'editPosts'){
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            editPost();
-        }
-        else {
-            throw new Exception('Erreur : aucun identifiant de billet
+         if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
+             if (isset($_GET['id']) && $_GET['id'] > 0) {
+                 editPost();
+             } else {
+                 throw new Exception('Erreur : aucun identifiant de billet
          envoyé');
-        }
+             }
+
+         }
+         else
+         {
+             throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
+         }
+
+
+
     }
 
     elseif ($_GET['action'] == 'editComments'){
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-           editComment();
-        }
-        else {
-            throw new Exception('Erreur : aucun identifiant de billet
-         envoyé');
-        }
-    }
 
-    /*elseif ($_GET['action'] == 'editReportedComments'){
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            editReportedComment();
-        }
-        else {
-            throw new Exception('Erreur : aucun identifiant de billet
+        if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                editComment();
+            } else {
+                throw new Exception('Erreur : aucun identifiant de billet
          envoyé');
+            }
         }
+        else{
+            throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
     }
-
-    elseif ($_GET['action'] == 'editLambdaComments'){
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            editReportedComment();
-        }
-        else {
-            throw new Exception('Erreur : aucun identifiant de billet
-         envoyé');
-        }
-    }*/
+    }
 
     elseif ($_GET['action'] == 'addPost'){
         if (!empty($_POST['title']) && !empty($_POST['resume']) && !empty($_POST['content'])) {

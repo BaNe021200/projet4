@@ -1,6 +1,6 @@
 <?php session_start()?>
-<?php $title = "Bilet simple pour l'alaska"; ?>
-<?php $blogTitle = "Bilet simple pour l'alaska"; ?>
+<?php $title = "Billet simple pour l'alaska"; ?>
+<?php $blogTitle = "Billet simple pour l'alaska"; ?>
 <?php $blogSubTitle = "le blog roman";?>
 <?php $connexion = 'index.php?action=adminConnexion' ?>
 <?php $typeConnexion = "Connexion" ?>

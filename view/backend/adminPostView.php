@@ -45,7 +45,7 @@
     <td><?= $post['title'] ?></td>
     <td><?= $post['creation_date_fr'] ?></td>
     <td><?= $post['modification_date_fr'] ?></td>
-    <td><?= $post['resume'] ;?></td>
+    <td><?= substr($post['resume'],0,100) ;?></td>
 
     <td><a href="index.php?action=editPosts&amp;id=<?= $post['id'] ?>"><button>Edit</button></a></td>
 
