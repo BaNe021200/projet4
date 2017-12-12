@@ -14,18 +14,15 @@
     <div class="col-lg-8 col-md-10 mx-auto">
 
     <h3>
-        <?= htmlspecialchars($reportedComments['author']); ?>
         <?= htmlspecialchars($lambdaComments['author']); ?>
 
     </h3>
     <p>
-        <?= nl2br($reportedComments['email']) ?>
         <?= nl2br($lambdaComments['email']) ?>
     </p>
 
 
     <p>
-        <?= nl2br($reportedComments['comment']); ?>
         <?= nl2br($lambdaComments['comment']); ?>
     </p>
 
@@ -34,7 +31,7 @@
 
 <!-- Button trigger modal -->
 
-<button type="button" data-toggle="modal" href="#myModal">Supprimer</button>
+<p><button type="button" data-toggle="modal" href="#myModal">Supprimer</button></p>
 
 
 
@@ -52,15 +49,60 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Vous êtes sur point de supprimer le message de <?= $reportedComments['author'] ?><?= $lambdaComments['author'] ?></p>
+                <p>Vous êtes sur point de supprimer le message de <?= $lambdaComments['author'] ?></p>
             </div>
             <div class="modal-footer">
                 <button type="button"  id="cancelButton" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="index.php?action=deletePost&amp;id=<?= $reportedComments['id'] ?><?= $lambdaComments['id'] ?>"><button type="button" class="btn btn-primary"id="Delbutton">Supprimer</button></a>
+                <a href="index.php?action=deletePost&amp;id=<?= $lambdaComments['id'] ?>"><button type="button" class="btn btn-primary"id="Delbutton">Supprimer</button></a>
             </div>
         </div>
     </div>
   </div>
+<div id="answer">
+    <p><strong>Ma réponse: </strong></p>
+    <p>
+
+
+
+        <?= nl2br($lambdaComments['answer']);?>
+
+
+    </p>
+
+    <h3>Répondre</h3>
+        <form id="contactForm" name="sentMessage" action="index.php?action=addAnswer&amp;id=<?= $lambdaComments['id'] ?>" method="post">
+
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                    <label>Pseudo *</label>
+                    <input class="form-control" type="hidden" id="author" name="answerAuthor" value="Jean Forteroche le "  />
+
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+
+
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                    <label for="comment">Réponse</label><br />
+                    <textarea id="comment"  class="form-control" name="answer" cols="500"
+                              placeholder="Réponse*"></textarea>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <p><em>* Obligatoire</em></p>
+                <input type="submit" value="Répondre" />
+            </div></div>
+
+    </form>
+
+    </div>
+
+
+
 </div>
 </article>
 <?php $content= ob_get_clean();?>

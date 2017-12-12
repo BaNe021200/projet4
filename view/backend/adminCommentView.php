@@ -42,7 +42,7 @@
         <td><?= substr($reportedComment['comment'],0,100) ?></td>
         <td><?= $reportedComment['comment_date_fr'] ;?></td>
 
-        <td><a href="index.php?action=editComments&amp;id=<?= $reportedComment['id'] ?>"><button>Edit</button></a></td>
+        <td><a href="index.php?action=editReportedComments&amp;id=<?=$reportedComment['id'] ?>"><button>Edit</button></a></td>
 
 
         <?php endforeach;?>

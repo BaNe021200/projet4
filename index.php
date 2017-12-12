@@ -91,6 +91,23 @@ if(isset($_GET['action'])){
         }
     }
 
+
+    elseif ($_GET['action'] == 'addAnswer'){
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+             if(!empty($_POST['answer'])){
+                 addAnswer($_GET['id'], $_POST['answer'] );
+             }
+             else {
+                 throw new Exception('Erreur : tous les champs ne sont pas remplis !');
+             }
+
+
+        }
+        else{
+            throw new Exception( 'Erreur : aucun identifiant de commentaire envoyé');
+        }
+    }
+
     elseif ($_GET['action'] == 'publicationPost'){
         if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
 
@@ -170,16 +187,28 @@ if(isset($_GET['action'])){
          {
              throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
          }
+}
 
-
-
-    }
-
-    elseif ($_GET['action'] == 'editComments'){
+     elseif ($_GET['action'] == 'editComments'){
 
         if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 editComment();
+            } else {
+                throw new Exception('Erreur : aucun identifiant de billet
+         envoyé');
+            }
+        }
+        else{
+            throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
+    }
+    }
+
+     elseif ($_GET['action'] == 'editReportedComments'){
+
+        if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                editReportedComment();
             } else {
                 throw new Exception('Erreur : aucun identifiant de billet
          envoyé');
@@ -202,13 +231,28 @@ if(isset($_GET['action'])){
     elseif ($_GET['action'] == 'signalizeComment') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             reportComment($_GET['id']);
-            echo $message;
+
         }
         else {
             throw new Exception('Erreur : aucun identifiant de commentaire
          envoyé');
         }
     }
+
+    elseif ($_GET['action'] == 'eraseReporting') {
+        if (isset($_GET['id']) && $_GET['id'] > 0) {
+            eraseReporting($_GET['id']);
+
+        }
+        else {
+            throw new Exception('Erreur : aucun identifiant de commentaire
+         envoyé');
+        }
+    }
+
+
+
+
 
 }
 else{

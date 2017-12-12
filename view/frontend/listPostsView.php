@@ -27,7 +27,7 @@ while ($data = $posts->fetch())
         </h4>
     </a>
     <p class="post-meta">Publié par
-        <a href="#">Jean Forteroche</a>
+        Jean Forteroche
        <?= $data['creation_date_fr'] ?></p>
 
         <br />

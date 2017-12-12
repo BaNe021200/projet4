@@ -71,6 +71,8 @@
     <div class="container">
       <div class="row">
 
+          <div class="col-lg-8 col-md-10 mx-auto">
+
             <?= $content ?>
 
 
@@ -82,7 +84,7 @@
 
     <!-- Footer -->
     <footer>
-      <div class="container">
+      <div class="containe r">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <ul class="list-inline text-center">

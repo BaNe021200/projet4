@@ -91,14 +91,32 @@ function editPost(){
 }
 
 function editComment(){
-    $commentReportedManager = new CommentManager();
-    $reportedComments = $commentReportedManager->getReportedComment($_GET['id']);
+
     $commentLambdaManager = new CommentManager();
     $lambdaComments = $commentLambdaManager->getLambdaComment($_GET['id']);
 
 
     require_once 'view/backend/editCommentView.php';
 }
+
+function editReportedComment(){
+    $commentReportedManager = new CommentManager();
+    $reportedComments = $commentReportedManager->getReportedComment($_GET['id']);
+    require_once 'view/backend/editReportedCommentView.php';
+}
+
+function eraseReporting($commentId){
+    $commentManager= new CommentManager();
+    $dereportedComment= $commentManager->eraseReporting($commentId);
+
+    if($dereportedComment===false){
+        throw new Exception("Impossible de désignaler le commentaire");
+    }
+    else{
+        header('Location:index.php');
+    }
+}
+
 
 function adminConnexion(){
     require_once 'view/backend/adminConnexionView.php';
@@ -177,6 +195,19 @@ function signOut(){
     header('Location:index.php');
 }
 
+/*function replyComment()
+{
+    require_once 'view/backend/replyCommentForm.php';
+}*/
 
+function addAnswer($commentId){
+    $comment= new CommentManager();
+    $newAnswer = $comment->postAnswer($commentId);
+
+    if($newAnswer){
+        header('Location:index.php?action=editComments&id='.$commentId);
+    }
+
+}
 
 

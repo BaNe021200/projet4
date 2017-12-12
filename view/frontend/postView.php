@@ -11,7 +11,7 @@
 
 <article>
 
-            <div class="col-lg-8 col-md-10 mx-auto">
+          <!--  <div class="col-lg-8 col-md-10 mx-auto">-->
 
                 <h3>
                     <?= htmlspecialchars($post['title']); ?>
@@ -60,6 +60,7 @@
                 <div class="form-group">
                     <p><em>* Obligatoire</em></p>
                     <input type="submit" />
+                    <hr>
                 </div></div>
 
     </form>
@@ -70,17 +71,20 @@
             {
                 ?>
 
-                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> </p>
                 <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 
-                <a href="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>">
+
                     <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post">
                         <input type="hidden" name="reportedComment" id="id" value="1">
 
                         <input type="submit" value="Signaler">
-                    </form>
+                        </form>
 
-                </a>
+
+                <p><strong><?= htmlspecialchars($comment['answerAuthor']) ?></strong>  <?= $comment['answer_date_fr'] ?></p>
+                <p><?= nl2br(htmlspecialchars($comment['answer'])) ?>
+                <hr></p>
                 <?php
             }
 
