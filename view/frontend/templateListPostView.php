@@ -120,7 +120,6 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="public/js/projet.js"></script>
     <script src="public/vendor/jquery/jquery.min.js"></script>
     <script src="public/vendor/popper/popper.min.js"></script>
     <script src="public/vendor/bootstrap/js/bootstrap.min.js"></script>

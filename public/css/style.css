@@ -5,3 +5,11 @@
 #cancelButton{
     background-color: cornflowerblue;
 }
+
+.commentVisible{
+    display:block;
+}
+
+commentInvisible{
+    display: none;
+}

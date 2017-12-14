@@ -79,15 +79,23 @@ while ($comment = $comments->fetch())
 
                     <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post" >
                         <input type="hidden" name="reportedComment" id="id" value="1">
-
+                 <?php if($comment['answer']===null): ?>
                         <input type="submit" value="Signaler"id= "reportformSubmit">
-                        </form>
+                <?php else: ?>
+                <input type="hidden" value="Signaler"id= "reportformSubmit">
+                 <?php endif;?>
+                </form>
 
 
-                <p id="answerComment"><strong><?= htmlspecialchars($comment['answerAuthor']) ?></strong>  <?= $comment['answer_date_fr'] ?></p>
+                <p id="answerComment" ><strong><?= htmlspecialchars($comment['answerAuthor']) ?></strong>  <?= $comment['answer_date_fr'] ?></p>
                 <p><?= nl2br(htmlspecialchars($comment['answer'])) ?>
                 <hr></p>
-                <script src="public/js/projet.js"></script>
+
+
+
+
+
+
 
     <?php
 
