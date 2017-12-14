@@ -12,20 +12,20 @@
 <form action="index.php?action=authentificationConnexion" method="post">
     <div class="control-group">
         <div class="form-group floating-label-form-group controls">
-<label for="login">login</label>
-<input class="form-control" type="text" name="login" id="login" placeholder="login">
+<label for="login">Identifiant</label>
+<input class="form-control" type="text" name="login" id="login" placeholder="Identifiant">
     </div>
     </div>
 
     <div class="control-group">
         <div class="form-group floating-label-form-group controls">
-<label for="password">password</label>
-<input class="form-control" type="password" name="password" id="password" placeholder="password">
+<label for="password">Mot de passe</label>
+<input class="form-control" type="password" name="password" id="password" placeholder="Mot de passe">
         </div>
     </div>
 
 
-<p><input type="submit" class="text-center" value="Sign up !"></p>
+<p><input type="submit" class="text-center" value="c'est parti !"></p>
 </form>
 
 <?php $content = ob_get_clean();?>

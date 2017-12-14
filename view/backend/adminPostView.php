@@ -11,18 +11,20 @@
 
 
 <?php ob_start();?>
-<a href="index.php?action=adminComment"><button>Commentaires</button></a>
 
 
 
 <div class="post-preview">
+    <div class="text-center mb-lg-5">
+
+        <a href="index.php?action=adminComment"><button>Commentaires</button></a></div>
 
 <h2>Récapitulatif d'une certaine situation à un instant non moins incertain</h2>
 
 
 
-
-<table class="table table-striped">
+<div class="mx-auto">
+<table class="table table-striped table-responsive ">
 <thead>
 <tr>
     <th>#</th>
@@ -57,9 +59,9 @@
 
     </tbody>
     </table>
+</div>
 
-
-    <p class="text-center"><a href="index.php?action=publicationPost"><button>Publier</button></a></p>
+    <p class="text-center" ><a href="index.php?action=publicationPost"><button>Publier</button></a></p>
 </div>
 
 <?php $content = ob_get_clean(); ?>

@@ -10,13 +10,13 @@
 
 <?php ob_start();?>
 
-<div class="col-lg-8 col-md-10 mx-auto">
+<div class="col-lg-8 col-md-10 mx-auto ">
 
     <form action="index.php?action=modifyPost&amp;id=<?= $posts['id'] ?>" method="post">
-        <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
+        <div class="control-group ">
+            <div class="form-group floating-label-form-group controls ">
                 <label>Titre</label>
-                <input type="text" id="title" name="title" class="form-control" value="<?= $posts['title'] ?>">
+                <input type="text" id="title" name="title" class="form-control text-center" value="<?= $posts['title'] ?>">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="control-group">
             <div class="form-group floating-label-form-group controls">
                 <label for="resume" id="resume" name="resume" >Résumé</label>
-                <textarea name="resume" rows="10" cols="40" maxlength="500" id="resume" class="form-control"><?= $posts['resume'] ?></textarea>
+                <textarea name="resume" rows="10" cols="40" maxlength="500" id="resume" class="form-control text-center"><?= $posts['resume'] ?></textarea>
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <p>  <input type="submit" value="Valider !"></p>
+        <p class="text-center">  <input type="submit" value="Valider !"></p>
 
     </form>
 

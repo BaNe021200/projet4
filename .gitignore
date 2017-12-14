@@ -16,3 +16,5 @@ vendor/
 gulpfile.js
 package.json
 public/js/
+
+!public/script/projet.js

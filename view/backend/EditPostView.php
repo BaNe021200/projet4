@@ -10,7 +10,7 @@
 <?php $head = ob_get_clean(); ?>
 <?php ob_start();?>
 <article>
-<div class="col-lg-8 col-md-10 mx-auto">
+<div class="col-lg-8 col-md-10 mx-auto text-center">
     <h3>
         <?= htmlspecialchars($post['title']); ?>
 
@@ -34,9 +34,9 @@
 
 
 <!-- Button trigger modal -->
-
+<div class="text-center mt-5">
 <a id="modification"  href="index.php?action=modificationPost&amp;id=<?= $post['id'] ?>"><button>Modifier</button></a>
-<button type="button" data-toggle="modal" href="#myModal">Supprimer</button>
+<button type="button" data-toggle="modal" href="#myModal">Supprimer</button></div>
 
 
 

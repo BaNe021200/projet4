@@ -36,7 +36,7 @@
     </div>
     </div>
 
-    <p>  <input type="submit" value="Publier !"></p>
+    <p class="text-center">  <input type="submit" value="Publier !"></p>
     
 </form>
 

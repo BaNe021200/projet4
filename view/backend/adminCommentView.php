@@ -11,13 +11,25 @@
 
 <?php ob_start();?>
 
-<a href="index.php?action=adminPost"><button>Billets</button></a>
-
+<!--<div class="mx-auto mb-lg-5 text-center" >
+    <a href="index.php?action=adminPost"><button>Billets</button></a>
+</div>
 <div class="post-preview">
 
-<h1>Interface d'administration Commentaires</h1>
+<h1>Interface d'administration Commentaires</h1>-->
 
-<table class="table table-striped">
+<div class="post-preview">
+    <div class="text-center mb-lg-5">
+
+        <a href="index.php?action=adminPost"><button>Billets</button></a></div>
+
+    <h2>Récapitulatif d'une certaine situation à un instant non moins incertain</h2>
+
+
+
+    <div class="mx-auto">
+
+<table class="table table-striped table-responsive">
     <caption>Commentaires signalés</caption>
     <thead>
     <tr>
@@ -39,7 +51,7 @@
         <td><?= $reportedComment['title'] ?> </td>
         <td><?= $reportedComment['author'] ?></td>
         <td><?= $reportedComment['email'] ?></td>
-        <td><?= substr($reportedComment['comment'],0,100) ?></td>
+        <td><?= substr($reportedComment['comment'],0,50) ?></td>
         <td><?= $reportedComment['comment_date_fr'] ;?></td>
 
         <td><a href="index.php?action=editReportedComments&amp;id=<?=$reportedComment['id'] ?>"><button>Edit</button></a></td>
@@ -52,7 +64,7 @@
     </tbody>
 </table>
 
-<table class="table table-striped">
+<table class="table table-striped table-responsive">
     <caption>Commentaires lambdas</caption>
     <thead>
     <tr>
@@ -74,7 +86,7 @@
         <td><?= $comment['title'] ?> </td>
         <td><?= $comment['author'] ?></td>
         <td><?= $comment['email'] ?></td>
-        <td><?= substr($comment['comment'],0,100) ?></td>
+        <td><?= substr($comment['comment'],0,50) ?></td>
         <td><?= $comment['comment_date_fr'] ;?></td>
 
         <td><a href="index.php?action=editComments&amp;id=<?=$comment['id']?>"><button>Edit</button></a></td>

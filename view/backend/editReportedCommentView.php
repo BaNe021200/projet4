@@ -11,7 +11,7 @@
 <?php ob_start();?>
 
 <article>
-    <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="col-lg-8 col-md-10 mx-auto text-center">
 
         <h3>
             <?= htmlspecialchars($reportedComments['author']); ?>
@@ -30,8 +30,14 @@
 
 
         <!-- Button trigger modal -->
+        <div class="text-center mt-5">
+            <form action="index.php?action=eraseReporting&amp;id=<?= $reportedComments['id'] ?>" method="post">
+                <input type="hidden" name="reportedComment" id="id" value="0">
 
-        <p><button type="button" data-toggle="modal" href="#myModal">Supprimer</button></p>
+                <input type="submit" value="Autoriser"><button type="button" data-toggle="modal" href="#myModal">Supprimer</button>
+
+            </form> </div>
+
 
 
 
@@ -61,11 +67,6 @@
         </div>
 
 
-            <form action="index.php?action=eraseReporting&amp;id=<?= $reportedComments['id'] ?>" method="post">
-                <input type="hidden" name="reportedComment" id="id" value="0">
-
-                <input type="submit" value="désigler">
-            </form>
 
 
 

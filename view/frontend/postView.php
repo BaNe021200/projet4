@@ -65,30 +65,35 @@
 
     </form>
 
-            <?php
 
-            while ($comment = $comments->fetch())
-            {
-                ?>
+<?php
+
+while ($comment = $comments->fetch())
+{
+    ?>
+    
 
                 <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> </p>
                 <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 
 
-                    <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post">
+                    <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post" >
                         <input type="hidden" name="reportedComment" id="id" value="1">
 
-                        <input type="submit" value="Signaler">
+                        <input type="submit" value="Signaler"id= "reportformSubmit">
                         </form>
 
 
-                <p><strong><?= htmlspecialchars($comment['answerAuthor']) ?></strong>  <?= $comment['answer_date_fr'] ?></p>
+                <p id="answerComment"><strong><?= htmlspecialchars($comment['answerAuthor']) ?></strong>  <?= $comment['answer_date_fr'] ?></p>
                 <p><?= nl2br(htmlspecialchars($comment['answer'])) ?>
                 <hr></p>
-                <?php
-            }
+                <script src="public/js/projet.js"></script>
 
-            ?>
+    <?php
+
+
+
+} ?>
 
 
 

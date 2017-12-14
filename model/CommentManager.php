@@ -12,6 +12,7 @@ class CommentManager extends Manager
 
         $comments = $pdo->prepare('SELECT id,author, comment, answerAuthor,answer,DATE_FORMAT(answerDate, \'%d/%m/%Y à %Hh%i\') AS answer_date_fr, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments WHERE reportedcomment= 0 AND  postId = ? ORDER BY comment_date');
         $comments->execute(array($postId));
+        $comments->fetch();
         return $comments;
 
     }
