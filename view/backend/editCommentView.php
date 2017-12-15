@@ -17,12 +17,12 @@
         <?= htmlspecialchars($lambdaComments['author']); ?>
 
     </h3>
-    <p>
+    <p class="text-center">
         <?= nl2br($lambdaComments['email']) ?>
     </p>
 
 
-    <p>
+    <p class="text-center">
         <?= nl2br($lambdaComments['comment']); ?>
     </p>
 
@@ -31,7 +31,7 @@
 
 <!-- Button trigger modal -->
 
-<p><button type="button" data-toggle="modal" href="#myModal">Supprimer</button></p>
+<p class="text-center"><button type="button" data-toggle="modal" href="#myModal">Supprimer</button></p>
 
 
 

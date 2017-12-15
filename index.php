@@ -25,10 +25,10 @@ if(isset($_GET['action'])){
     elseif ($_GET['action'] == 'getSignIn'){
         if(isset($_POST['login']) || isset($_POST['password'])){
             if($_POST['password']===$_POST['password2']){
-                if(!empty($_POST['password'])&& !empty($_POST['password2'])){
-                    getSignIn();
+               if(!empty($_POST['password'])&& !empty($_POST['password2'])){
+                     getSignIn($_POST['login']);
                 }
-                else{
+               else{
                     throw new Exception('Les champs mots de passe ne peuvent être vide !');
                 }
 
@@ -37,7 +37,7 @@ if(isset($_GET['action'])){
             else
             {
                throw new Exception('Les deux mots de passe sont différents');
-                //require ('view/frontend/connexionErrorView.php');
+
             }
 
         }

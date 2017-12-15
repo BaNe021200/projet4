@@ -146,15 +146,24 @@ function adminConnexion(){
 function authentificationConnexion(){
     $adminManager= new AdminManager();
     $authentification = $adminManager->getConnexion();
-    if(!$authentification){
+    $pwd=$_POST['password'];
+    if(password_verify($pwd,$authentification)){
 
-        //header('Location:index.php?action=adminConnexion');
-        // echo'Mauvais identifiant ou mot de passe !';
-        throw new Exception('Mauvais identifiant ou mot de passe !');
+        session_start();
+        $_SESSION['id']=$authentification['id'];
+        $_SESSION['login']= $_POST['login'];
+        setcookie("ID",$_SESSION['id'], time() + 3600*24*365,null, null, false, true);
+        setcookie("Login",$_SESSION['login'], time() + 3600*24*365,null, null, false, true);
 
+
+        header('Location:index.php?action=adminPost');
 
 
     }
+    else{
+        throw new Exception('Mauvais identifiant ou mot de passe !');
+    }
+
 
 
 
@@ -168,18 +177,28 @@ function signIn(){
     require_once 'view/backend/signInForm.php';
 }
 
-function getSignIn(){
+function getSignIn($login){
+
+        $veryLogin= new AdminManager();
+    $getLogin = $veryLogin->getLogin($login);
+        if(is_null($getLogin)){
+
+            $adminManager = new AdminManager();
+            $insertLogin= $adminManager->insertLogin($login);
+            if($insertLogin==false){
+                throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible d'insérer vos idenfiants !");
+            }
+            else{
+                header('Location:index.php?action=adminConnexion');
+            }
 
 
-
-        $adminManager = new AdminManager();
-        $getLogin= $adminManager->getLogin();
-        if($getLogin==false){
-            throw new Exception("Y'a comme qui dirait du soucis à se faire : impossible d'insérer vos idenfiants !");
         }
-        else{
-            header('Location:index.php?action=adminConnexion');
+        else
+        {
+            throw new Exception("Le login ".$login." existe déjà !");
         }
+
 
 
 

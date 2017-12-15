@@ -23,41 +23,46 @@ class AdminManager extends Manager
 
 
     }*/
-    public function getConnexion(){
+    /*public function getConnexion(){
         $pdo=$this->dbConnect();
         $pdoStat=$pdo->prepare('SELECT id FROM admin WHERE login=:login AND password=:password');
         $pdoStat->bindValue(':login',$_POST['login'],PDO::PARAM_STR);
         $pdoStat->bindValue(':password',$_POST['password'],PDO::PARAM_STR);
         $connexionSucces = $pdoStat->execute();
         $connexionIsOk = $pdoStat->fetch();
+        return $connexionIsOk;
+}*/
+    public function getConnexion(){
 
-            /*if(!$connexionIsOk){
-
-             header('Location:index.php?action=adminConnexion');
-               // echo'Mauvais identifiant ou mot de passe !';
-
-
-
-            }*/
-            if($connexionIsOk)
-            /*else*/
-            {
-                session_start();
-                $_SESSION['id']=$connexionIsOk['id'];
-                $_SESSION['login']= $_POST['login'];
-                setcookie("ID",$_SESSION['id'], time() + 3600*24*365,null, null, false, true);
-                setcookie("Login",$_SESSION['login'], time() + 3600*24*365,null, null, false, true);
+        $pwd=$_POST['password'];
 
 
-                header('Location:index.php?action=adminPost');
-            }
+        $pdo=$this->dbConnect();
+        $pdoStat=$pdo->prepare('SELECT id, password  FROM admin WHERE login=:login');
+        $pdoStat->bindValue(':login',$_POST['login'],PDO::PARAM_STR);
+        $hashedPass = $pdoStat->execute();
+        $hashedPass = $pdoStat->fetch();
+        $veryPassword = $hashedPass['password'];
+        return $veryPassword;
+}
+
+     public function getLogin(){
+         $login= $_POST['login'];
+         $pdo= $this->dbConnect();
+         $pdoStat = $pdo->query("SELECT id FROM admin WHERE login = '$login'  ");
+         $veryLogin= $pdoStat->execute();
+         $veryLogin= $pdoStat->fetch();
+         $getloginId= $veryLogin['id'];
+         return $getloginId;
      }
 
-    public function  getLogin(){
+    public function  insertLogin(){
+
+        $hashPwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $pdo= $this->dbConnect();
         $pdoStat=$pdo->prepare('INSERT INTO admin VALUES(NULL,:login,:password)');
         $pdoStat->bindValue(':login', $_POST['login'],PDO::PARAM_STR);
-        $pdoStat->bindValue(':password', $_POST['password'],PDO::PARAM_STR);
+        $pdoStat->bindValue(':password',$hashPwd ,PDO::PARAM_STR);
 
         $connexionStat=$pdoStat->execute();
         return $connexionStat;
