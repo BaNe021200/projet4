@@ -219,6 +219,21 @@ if(isset($_GET['action'])){
     }
     }
 
+     elseif ($_GET['action'] == 'editAuthorisedComments'){
+
+        if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                editAuthorisedComment();
+            } else {
+                throw new Exception('Erreur : aucun identifiant de billet
+         envoyé');
+            }
+        }
+        else{
+            throw new Exception("Erreur vous n'êtes pas connectez. Veuillez vous identifier");
+    }
+    }
+
     elseif ($_GET['action'] == 'addPost'){
         if (!empty($_POST['title']) && !empty($_POST['resume']) && !empty($_POST['content'])) {
             addPost($_POST['title'], $_POST['resume'], $_POST['content']);

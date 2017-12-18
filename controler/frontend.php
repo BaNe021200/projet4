@@ -15,10 +15,12 @@ function listPosts(){
 function post(){
     $postManager = new PostManager();
     $commentManager = new CommentManager();
+    $authorizedCommentsManager = new CommentManager();
 
 
     $post = $postManager->getPost($_GET['id']);
     $comments =$commentManager->getComment($_GET['id']);
+    $authorizedComments = $authorizedCommentsManager->getAuthorizedComment($_GET['id']);
     require('view/frontend/postView.php');
 
 }

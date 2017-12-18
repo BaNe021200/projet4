@@ -33,7 +33,7 @@
     <caption>Commentaires signalés</caption>
     <thead>
     <tr>
-        <th>#</th>
+
         <th>Titre du billet</th>
         <th>Auteur du commentaire</th>
         <th>email</th>
@@ -47,12 +47,12 @@
 
     <?php foreach ($reportedComments as $reportedComment):?>
     <tr>
-        <td><?= $reportedComment['id'] ?></td>
-        <td><?= $reportedComment['title'] ?> </td>
-        <td><?= $reportedComment['author'] ?></td>
-        <td><?= $reportedComment['email'] ?></td>
-        <td><?= substr($reportedComment['comment'],0,50) ?></td>
-        <td><?= $reportedComment['comment_date_fr'] ;?></td>
+
+        <td><?= htmlspecialchars($reportedComment['title']) ?> </td>
+        <td><?= htmlspecialchars($reportedComment['author']) ?></td>
+        <td><?= htmlspecialchars($reportedComment['email']) ?></td>
+        <td><?= htmlspecialchars(substr($reportedComment['comment'],0,50)) ?></td>
+        <td><?= htmlspecialchars($reportedComment['comment_date_fr']) ;?></td>
 
         <td><a href="index.php?action=editReportedComments&amp;id=<?=$reportedComment['id'] ?>"><button>Edit</button></a></td>
 
@@ -68,11 +68,11 @@
     <caption>Commentaires lambdas</caption>
     <thead>
     <tr>
-        <th>#</th>
+
         <th>Titre du billet</th>
         <th>Auteur du commentaire</th>
-        <th>email</th>
         <th>Commentaire</th>
+        <th>Réponse</th>
         <th>Date de publication</th>
 
 
@@ -82,14 +82,49 @@
 
     <?php foreach ($comments as $comment):?>
     <tr>
-        <td><?= $comment['id'] ?> </td>
-        <td><?= $comment['title'] ?> </td>
-        <td><?= $comment['author'] ?></td>
-        <td><?= $comment['email'] ?></td>
-        <td><?= substr($comment['comment'],0,50) ?></td>
-        <td><?= $comment['comment_date_fr'] ;?></td>
+
+        <td><?= htmlspecialchars($comment['title']) ?> </td>
+        <td><?= htmlspecialchars($comment['author']) ?></td>
+        <td><?= htmlspecialchars(substr($comment['comment'],0,50)) ?></td>
+        <td><?= htmlspecialchars($comment['answer']) ?></td>
+        <td><?= htmlspecialchars($comment['comment_date_fr']) ;?></td>
 
         <td><a href="index.php?action=editComments&amp;id=<?=$comment['id']?>"><button>Edit</button></a></td>
+
+
+        <?php endforeach;?>
+
+    </tr>
+
+    </tbody>
+</table>
+
+<table class="table table-striped table-responsive">
+    <caption>Commentaires autorisés</caption>
+    <thead>
+    <tr>
+
+        <th>Titre du billet</th>
+        <th>Auteur du commentaire</th>
+        <th>Commentaire</th>
+        <th>Réponse</th>
+        <th>Date de publication</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <?php foreach ($authorizedComments as $authorizedComment):?>
+    <tr>
+
+        <td><?= htmlspecialchars($authorizedComment['title']) ?> </td>
+        <td><?= htmlspecialchars($authorizedComment['author']) ?></td>
+        <td><?= htmlspecialchars(substr($authorizedComment['comment'],0,50)) ?></td>
+        <td><?= htmlspecialchars($authorizedComment['answer']) ?></td>
+        <td><?= htmlspecialchars($authorizedComment['comment_date_fr']) ;?></td>
+
+        <td><a href="index.php?action=editAuthorisedComments&amp;id=<?=$authorizedComment['id']?>"><button>Edit</button></a></td>
 
 
         <?php endforeach;?>

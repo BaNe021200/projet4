@@ -42,8 +42,8 @@ class AdminManager extends Manager
         $pdoStat->bindValue(':login',$_POST['login'],PDO::PARAM_STR);
         $hashedPass = $pdoStat->execute();
         $hashedPass = $pdoStat->fetch();
-        $veryPassword = $hashedPass['password'];
-        return $veryPassword;
+        $verifyPassword = $hashedPass['password'];
+        return $verifyPassword;
 }
 
      public function getLogin(){
@@ -76,25 +76,6 @@ class AdminManager extends Manager
 
     }
 
-    public function register(){
-        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-        $login = $post['login'];
-        $password = md5($post['password']);
-        if($post['submit']){
-            if($login === '' || $password === '') {
-                echo 'les champs ne sont pas tous remplis';
-            }
-            $pdo= $this->dbConnect();
-            $pdoStat=$pdo->prepare('INSERT INTO admin VALUES(NULL,:login,:password)');
-            $pdoStat->bindValue(':login', $login,PDO::PARAM_STR);
-            $pdoStat->bindValue(':password', $password,PDO::PARAM_STR);
-
-            $connexionStat=$pdoStat->execute();
-            return $connexionStat;
-
-        }
-
-    }
 
 }

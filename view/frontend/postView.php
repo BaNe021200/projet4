@@ -33,7 +33,7 @@
             <form id="contactForm" name="sentMessage" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
-                        <label>Pseudo *</label>
+                        <label>Pseudo<span class="requiredForm">*</span></label>
                         <input class="form-control" type="text" id="author" name="author" placeholder="Pseudo*" />
 
                         <p class="help-block text-danger"></p>
@@ -51,57 +51,66 @@
 
                 <div class="control-group">
                     <div class="form-group floating-label-form-group controls">
-                        <label for="comment">Commentaire*</label><br />
+                        <label for="comment">Commentaire<span class="requiredForm">*</span></label><br />
                         <textarea id="comment"  class="form-control" name="comment" placeholder="Commentaire*"></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <p><em>* Obligatoire</em></p>
+                    <p><em><span class="requiredForm">*</span> Obligatoire</em></p>
                     <input type="submit" />
                     <hr>
                 </div></div>
 
     </form>
 
+    <?php foreach ($authorizedComments as $authorizedComment):  ?>
 
-<?php
+        <p><strong><?= htmlspecialchars($authorizedComment['author']) ?></strong> le <?= $authorizedComment['comment_date_fr'] ?> </p>
+        <p><?= nl2br(htmlspecialchars($authorizedComment['comment'])) ?></p>
+        <p id="answerComment" ><strong><?= htmlspecialchars($authorizedComment['answerAuthor']) ?></strong> <?= $authorizedComment['answer_date_fr'] ?></p>
+        <p><?= nl2br(htmlspecialchars($authorizedComment['answer'])) ?>
+        <hr></p>
 
-while ($comment = $comments->fetch())
-{
-    ?>
+
+    <?php endforeach; ?>
+<?php foreach ($comments as $comment): ?>
+
+
+
     
 
-                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> </p>
+                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> <?= $comment['comment_date_fr'] ?> </p>
                 <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 
 
                     <form action="index.php?action=signalizeComment&amp;id=<?= $comment['id'] ?>" method="post" >
                         <input type="hidden" name="reportedComment" id="id" value="1">
-                 <?php if($comment['answer']===null): ?>
-                        <input type="submit" value="Signaler"id= "reportformSubmit">
-                <?php else: ?>
-                <input type="hidden" value="Signaler"id= "reportformSubmit">
+                 <?php if(is_null($comment['answer'])): ?>
+
+
+                            <input type="submit" value="Signaler"id= "reportformSubmit">
+
+
+
+                 <?php else : ?>
+                 <input type="hidden" value="Signaler"id= "reportformSubmit">
                  <?php endif;?>
+
+
+
+
                 </form>
 
 
-                <p id="answerComment" ><strong><?= htmlspecialchars($comment['answerAuthor']) ?></strong>  <?= $comment['answer_date_fr'] ?></p>
+                <p><strong><?= htmlspecialchars($comment['answerAuthor']) ?></strong>  <?= $comment['answer_date_fr'] ?></p>
                 <p><?= nl2br(htmlspecialchars($comment['answer'])) ?>
                 <hr></p>
+<?php
+endforeach;
+ ?>
 
-
-
-
-
-
-
-    <?php
-
-
-
-} ?>
 
 
 

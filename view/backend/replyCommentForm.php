@@ -12,7 +12,7 @@
     <div class="control-group">
         <div class="form-group floating-label-form-group controls">
             <label>Pseudo *</label>
-            <input class="form-control" type="text" id="answerAuthor" name="answerAuthor" value="Jean Forteroche" />
+            <input class="form-control" type="text" id="answerAuthor" name="answerAuthor"  />
 
             <p class="help-block text-danger"></p>
         </div>

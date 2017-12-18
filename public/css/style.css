@@ -13,3 +13,7 @@
 commentInvisible{
     display: none;
 }
+
+.requiredForm{
+    color: orange;
+}

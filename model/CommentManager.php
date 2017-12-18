@@ -6,14 +6,70 @@ use PDO;
 class CommentManager extends Manager
 {
 
-    public function getComment($postId){
+    /*public function getComment($postId){
         // Récupération des comments
         $pdo= $this->dbConnect();
 
-        $comments = $pdo->prepare('SELECT id,author, comment, answerAuthor,answer,DATE_FORMAT(answerDate, \'%d/%m/%Y à %Hh%i\') AS answer_date_fr, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments WHERE reportedcomment= 0 AND  postId = ? ORDER BY comment_date');
+        $comments = $pdo->prepare('SELECT id,author, comment, answerAuthor,answer,DATE_FORMAT(answerDate, \'%d/%m/%Y à %Hh%i\') AS answer_date_fr, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr, reportedComment FROM comments WHERE reportedcomment= 0 AND  postId = ? ORDER BY comment_date');
         $comments->execute(array($postId));
 
         return $comments;
+
+    }*/
+    public function getComment(){
+        // Récupération des comments
+        $pdo= $this->dbConnect();
+
+        $pdoStat = $pdo->prepare('SELECT id,author, comment, answerAuthor,answer,DATE_FORMAT(answerDate, \'le %d/%m/%Y à %Hh%i\') AS answer_date_fr, DATE_FORMAT(comment_date, \'le %d/%m/%Y à %Hh%i\') AS comment_date_fr, reportedComment FROM comments WHERE reportedcomment= 0 AND  postId = :postId ORDER BY comment_date');
+        $pdoStat->bindValue(':postId',$_GET['id'],PDO::PARAM_INT);
+        $comments = $pdoStat->execute();
+        $comments = $pdoStat->fetchAll();
+
+        return $comments;
+
+    }
+
+    public function getAuthorizedComment(){
+        // Récupération des comments
+        $pdo= $this->dbConnect();
+
+        $pdoStat = $pdo->prepare('SELECT id,author, comment, answerAuthor,answer,DATE_FORMAT(answerDate, \'le %d/%m/%Y à %Hh%i\') AS answer_date_fr, DATE_FORMAT(comment_date, \'le %d/%m/%Y à %Hh%i\') AS comment_date_fr, reportedComment FROM comments WHERE reportedcomment= 2 AND  postId = :postId ORDER BY comment_date');
+        $pdoStat->bindValue(':postId',$_GET['id'],PDO::PARAM_INT);
+        $authorizedComments = $pdoStat->execute();
+        $authorizedComments = $pdoStat->fetchAll();
+
+        return $authorizedComments;
+
+    }
+
+    public function  getAuthorizedComments(){
+        $pdo= $this->dbConnect();
+        $pdoStat=$pdo->query('
+        SELECT posts.title,comments.id, postId, author, email,comment,comments.answerAuthor,comments.answer,DATE_FORMAT(comments.answerDate, \'le %d/%m/%Y à %Hh%i\') AS answer_date_fr,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr,reportedComment
+        FROM comments
+        INNER JOIN posts
+        ON comments.postId = posts.id
+        WHERE comments.reportedComment=2
+        ORDER BY  comments.comment_date DESC');
+        $authorizedComments= $pdoStat->execute();
+        $authorizedComments=$pdoStat->fetchAll();
+
+        return $authorizedComments;
+
+    }
+
+    public function getAutoComment($commentId){
+        // Récupération des comments
+        $pdo= $this->dbConnect();
+
+        $pdostat = $pdo->prepare('
+        SELECT id,author,email, comment,answer
+        FROM comments
+        WHERE reportedcomment= 2
+        AND id =?');
+        $pdostat->execute(array($commentId));
+        $autoComments=$pdostat->fetch();
+        return $autoComments;
 
     }
 
@@ -81,7 +137,7 @@ class CommentManager extends Manager
         ON comments.postId = posts.id
         WHERE comments.reportedComment=1
         ORDER BY  comments.comment_date DESC ');
-        return $pdoStat;var_dump($pdoStat);die;
+        return $pdoStat;
 
     }
 

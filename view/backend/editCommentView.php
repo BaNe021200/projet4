@@ -75,7 +75,7 @@
             <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                     <label>Pseudo *</label>
-                    <input class="form-control" type="hidden" id="author" name="answerAuthor" value="Jean Forteroche le "  />
+                    <input class="form-control" type="hidden" id="author" name="answerAuthor" value="Jean Forteroche"  />
 
                     <p class="help-block text-danger"></p>
                 </div>

@@ -32,7 +32,7 @@
         <!-- Button trigger modal -->
         <div class="text-center mt-5">
             <form action="index.php?action=eraseReporting&amp;id=<?= $reportedComments['id'] ?>" method="post">
-                <input type="hidden" name="reportedComment" id="id" value="0">
+                <input type="hidden" name="reportedComment" id="id" value="2">
 
                 <input type="submit" value="Autoriser"><button type="button" data-toggle="modal" href="#myModal">Supprimer</button>
 

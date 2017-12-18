@@ -36,6 +36,8 @@ function adminComment(){
     $reportedComments = $reportedCommentManager->getReportedComments();
     $commentManager = new CommentManager();
     $comments=$commentManager->getLambdaComments();
+    $authorizedCommentsManager = new CommentManager();
+    $authorizedComments = $authorizedCommentsManager->getAuthorizedComments();
     require_once 'view/backend/adminCommentView.php';
 
 }
@@ -104,6 +106,14 @@ function editReportedComment(){
     $reportedComments = $commentReportedManager->getReportedComment($_GET['id']);
     require_once 'view/backend/editReportedCommentView.php';
 }
+
+function editAuthorisedComment(){
+    $authorisedCommentManager = new CommentManager();
+    $autoComments = $authorisedCommentManager->getAutoComment($_GET['id']);
+    require_once 'view/backend/editAuthorisedCommentView.php';
+}
+
+
 
 function eraseReporting($commentId){
     $commentManager= new CommentManager();
@@ -224,7 +234,7 @@ function addAnswer($commentId){
     $newAnswer = $comment->postAnswer($commentId);
 
     if($newAnswer){
-        header('Location:index.php?action=editComments&id='.$commentId);
+        header('Location:index.php?action=adminComment');
     }
 
 }
