@@ -23,7 +23,7 @@
 
 
         <p>
-            <?= nl2br($reportedComments['comment']); ?>
+            <?= nl2br(htmlentities($reportedComments['comment'])); ?>
         </p>
 
 
@@ -58,8 +58,8 @@
                         <p>Vous êtes sur point de supprimer le message de <?= $reportedComments['author'] ?></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button"  id="cancelButton" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <a href="index.php?action=deletePost&amp;id=<?=$reportedComments['id'] ?>"><button type="button" class="btn btn-primary"id="Delbutton">Supprimer</button></a>
+                        <button type="button"   class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                        <a href="index.php?action=deletePost&amp;id=<?=$reportedComments['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
 
                     </div>
                 </div>

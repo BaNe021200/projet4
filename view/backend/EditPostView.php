@@ -57,8 +57,8 @@
                 <p>Vous êtes sur point de supprimer le  <?= $post['title'] ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button" id="cancelButton" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="index.php?action=deletePost&amp;id=<?= $post['id'] ?>"><button type="button" id="Delbutton" class="btn btn-primary" >Supprimer</button></a>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                <a href="index.php?action=deletePost&amp;id=<?= $post['id'] ?>"><button type="button"  class="btn btn-danger" >Supprimer</button></a>
             </div>
         </div>
     </div>

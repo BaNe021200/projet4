@@ -81,10 +81,7 @@ function deletePost($postId){
 function editPost(){
     $postManager = new PostManager();
     $post = $postManager->getPost($_GET['id']);
-    /*$commentReportedManager = new CommentManager();
-    $reportedComments = $commentReportedManager->getReportedComment($_GET['id']);
-    $commentLambdaManager = new CommentManager();
-    $lambdaComments = $commentLambdaManager->getLambdaComment($_GET['id']);*/
+
 
 
 
@@ -113,8 +110,6 @@ function editAuthorisedComment(){
     require_once 'view/backend/editAuthorisedCommentView.php';
 }
 
-
-
 function eraseReporting($commentId){
     $commentManager= new CommentManager();
     $dereportedComment= $commentManager->eraseReporting($commentId);
@@ -127,31 +122,9 @@ function eraseReporting($commentId){
     }
 }
 
-
 function adminConnexion(){
     require_once 'view/backend/adminConnexionView.php';
 }
-
-/*function authentificationConnexion(){
-    $adminManager= new AdminManager();
-    $passHache=password_hash($_POST['password'],PASSWORD_DEFAULT);var_dump($passHache);die;
-    $AuthentificatedConnexion = $adminManager->getConnexion($passHache);
-
-    if(!$AuthentificatedConnexion){
-
-        echo'Mauvais identifiant ou mot de passe !';
-
-    }
-    else
-    {
-        session_start();
-        $_SESSION['id']=$AuthentificatedConnexion['id'];
-        $_SESSION['login']=$_post['login'];
-        echo'vous êtes connecté';
-
-        require_once 'view/backend/adminPostView.php';
-    }
-}*/
 
 function authentificationConnexion(){
     $adminManager= new AdminManager();
@@ -223,11 +196,6 @@ function signOut(){
     $getOut = $adminManager->disconnect();
     header('Location:index.php');
 }
-
-/*function replyComment()
-{
-    require_once 'view/backend/replyCommentForm.php';
-}*/
 
 function addAnswer($commentId){
     $comment= new CommentManager();

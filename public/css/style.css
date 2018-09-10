@@ -1,18 +1,3 @@
-#Delbutton{
-    background-color: #c82333;
-}
-
-#cancelButton{
-    background-color: cornflowerblue;
-}
-
-.commentVisible{
-    display:block;
-}
-
-commentInvisible{
-    display: none;
-}
 
 .requiredForm{
     color: orange;

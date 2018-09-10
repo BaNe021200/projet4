@@ -91,7 +91,6 @@ if(isset($_GET['action'])){
         }
     }
 
-
     elseif ($_GET['action'] == 'addAnswer'){
         if (isset($_GET['id']) && $_GET['id'] > 0) {
              if(!empty($_POST['answer'])){
@@ -173,7 +172,7 @@ if(isset($_GET['action'])){
         }
     }
 
-     elseif ($_GET['action'] == 'editPosts'){
+    elseif ($_GET['action'] == 'editPosts'){
          if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
              if (isset($_GET['id']) && $_GET['id'] > 0) {
                  editPost();
@@ -189,7 +188,7 @@ if(isset($_GET['action'])){
          }
 }
 
-     elseif ($_GET['action'] == 'editComments'){
+    elseif ($_GET['action'] == 'editComments'){
 
         if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -204,7 +203,7 @@ if(isset($_GET['action'])){
     }
     }
 
-     elseif ($_GET['action'] == 'editReportedComments'){
+    elseif ($_GET['action'] == 'editReportedComments'){
 
         if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -219,7 +218,7 @@ if(isset($_GET['action'])){
     }
     }
 
-     elseif ($_GET['action'] == 'editAuthorisedComments'){
+    elseif ($_GET['action'] == 'editAuthorisedComments'){
 
         if(isset($_COOKIE['ID'])&& isset($_COOKIE['Login'])) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {

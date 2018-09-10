@@ -18,12 +18,12 @@
 
     </h3>
     <p class="text-center">
-        <?= nl2br($lambdaComments['email']) ?>
+        <?= nl2br(htmlspecialchars($lambdaComments['email'])) ?>
     </p>
 
 
     <p class="text-center">
-        <?= nl2br($lambdaComments['comment']); ?>
+        <?= nl2br(htmlspecialchars($lambdaComments['comment'])); ?>
     </p>
 
 
@@ -52,8 +52,8 @@
                 <p>Vous êtes sur point de supprimer le message de <?= $lambdaComments['author'] ?></p>
             </div>
             <div class="modal-footer">
-                <button type="button"  id="cancelButton" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a href="index.php?action=deletePost&amp;id=<?= $lambdaComments['id'] ?>"><button type="button" class="btn btn-primary"id="Delbutton">Supprimer</button></a>
+                <button type="button"  class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                <a href="index.php?action=deletePost&amp;id=<?= $lambdaComments['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
             </div>
         </div>
     </div>

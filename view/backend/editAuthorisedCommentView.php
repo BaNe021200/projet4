@@ -52,8 +52,8 @@
                         <p>Vous êtes sur point de supprimer le message de <?= $autoComments['author'] ?></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button"  id="cancelButton" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <a href="index.php?action=deletePost&amp;id=<?= $autoComments['id'] ?>"><button type="button" class="btn btn-primary"id="Delbutton">Supprimer</button></a>
+                        <button type="button"  class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                        <a href="index.php?action=deletePost&amp;id=<?= $autoComments['id'] ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
                     </div>
                 </div>
             </div>
